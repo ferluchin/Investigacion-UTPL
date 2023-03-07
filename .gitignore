@@ -1,0 +1,8 @@
+.env
+
+# Node allegro
+# DB config
+#/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
