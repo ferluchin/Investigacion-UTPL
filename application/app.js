@@ -45,6 +45,57 @@ function processDataBySource(csvData) {
         },
     });
 }
+//Crea una nueva función processDataByAuthor para procesar el CSV y contar las publicaciones por autor:
+function processDataByAuthor(csvData) {
+    const numArticlesByAuthor = {};
+
+    Papa.parse(csvData, {
+        header: true,
+        step: function (row) {
+            const authors = row.data.Authors.split(", ");
+
+            authors.forEach((author) => {
+                if (!numArticlesByAuthor.hasOwnProperty(author)) {
+                    numArticlesByAuthor[author] = 1;
+                } else {
+                    numArticlesByAuthor[author]++;
+                }
+            });
+        },
+        complete: function () {
+            createChartByAuthor(numArticlesByAuthor);
+        },
+    });
+}
+
+// función processDataByCitations para procesar el CSV y recopilar la información del año de publicación y las citas:
+
+
+function processDataByCitations(csvData) {
+    const yearCitationData = [];
+
+    Papa.parse(csvData, {
+        delimiter: ";",
+        header: true,
+        step: function (row) {
+            const year = row.data.Year;
+            const citedByIndex = Object.keys(row.data).find((key) => key.toLowerCase() === "cited by");
+            const citations = row.data[citedByIndex];
+
+            if (citations) {
+                yearCitationData.push({ year: parseInt(year), citations: parseInt(citations) });
+            }
+        },
+        complete: function () {
+            createCitationsByYearChart(yearCitationData);
+        },
+    });
+}
+
+
+
+//
+//FIN LECTURA Y PROCESAMIENTO DE ARCHIVOS CSV
 
 // Función para crear el gráfico utilizando Chart.js
 function createChart(years, numArticlesByYear) {
@@ -105,11 +156,97 @@ function createChartBySource(sources, numArticlesBySource) {
         options: chartOptions,
     });
 }
+
+//función createChartByAuthor para crear la tercera gráfica utilizando Chart.js. 
+//Esta función también ordenará a los autores por la cantidad de publicaciones y tomará solo los N autores más productivos 
+//(en este ejemplo, N = 10):
+
+function createChartByAuthor(numArticlesByAuthor) {
+    // Ordenar autores por cantidad de publicaciones y tomar solo los 10 primeros
+    const topAuthors = Object.entries(numArticlesByAuthor)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+
+    const authors = topAuthors.map((entry) => entry[0]);
+    const numArticles = topAuthors.map((entry) => entry[1]);
+
+    const ctx = document.getElementById("topAuthorsChart").getContext("2d");
+    const chartData = {
+        labels: authors,
+        datasets: [
+            {
+                label: "Autores más productivos",
+                data: numArticles,
+                backgroundColor: "rgba(153, 102, 255, 0.2)",
+                borderColor: "rgba(153, 102, 255, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+    const chartOptions = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
+
+    new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+
+//función createCitationsByYearChart para crear la cuarta gráfica utilizando Chart.js:
+
+function createCitationsByYearChart(yearCitationData) {
+    const ctx = document.getElementById("citationsByYearChart").getContext("2d");
+    const chartData = {
+        datasets: [
+            {
+                label: "Citas por año de publicación",
+                data: yearCitationData,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+    const chartOptions = {
+        scales: {
+            x: {
+                type: "linear",
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: "Año",
+                },
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: "Citas",
+                },
+            },
+        },
+    };
+
+    new Chart(ctx, {
+        type: "scatter",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+
 // Leer el archivo CSV
 fetch("Combinado-WoS-Scopus.csv")
     .then((response) => response.text())
     .then((csvData) => {
         processData(csvData); // Procesar datos para la primera gráfica
         processDataBySource(csvData); // Procesar datos para la segunda gráfica
+        processDataByAuthor(csvData); // Procesar datos para la tercera gráfica
+        processDataByCitations(csvData); // Procesar datos para la cuarta gráfica
     })
     .catch((error) => console.error("Error al leer el archivo CSV:", error));

@@ -9,6 +9,10 @@ h1 {
     padding: 20px;
 }
 
+h2 {
+    text-align: center;
+    padding: 20px;
+}
 .chart-container {
     width: 80%;
     margin: 0 auto;

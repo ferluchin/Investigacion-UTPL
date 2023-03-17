@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -11,20 +11,32 @@
 </head>
 
 <body>
+
+
     <h1>Visualización de datos de artículos</h1>
-    <div class="chart-container">
-        <canvas id="chart1"></canvas>
-    </div>
-    <!-- Añade más elementos canvas para otros gráficos aquí -->
-
+    <h2>Número de artículos por año (2020-2023)</h2>
     <div class="chart-container">
         <canvas id="chart1"></canvas>
     </div>
 
+    <h2>
+        Cantidad de publicaciones por fuente Scopus - Web of Science - Ambas
+    </h2>
     <div class="chart-container">
         <canvas id="publicationsBySourceChart"></canvas>
     </div>
 
+    <h2>
+        Relación entre el año de publicación y las citas
+    </h2>
+    <div class="chart-container">
+        <canvas id="citationsByYearChart"></canvas>
+    </div>
+
+    <h2>Top 10 de losAutores más productivos</h2>
+    <div class="chart-container">
+        <canvas id="topAuthorsChart"></canvas>
+    </div>
 
     <script src="app.js"></script>
 </body>
