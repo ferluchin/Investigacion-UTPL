@@ -59,7 +59,7 @@ ball_dx = BALL_SPEED
 ball_dy = BALL_SPEED
 
 # Main game loop
-while not game_over:
+while True:  # Cambia el bucle principal para que se ejecute siempre
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -113,3 +113,21 @@ while not game_over:
 
         pygame.display.flip()
         pygame.time.delay(16)
+
+    if game_over:
+        draw_text(f"¡Jugador {winner} ha ganado!",
+                  WIDTH / 2 - 150, HEIGHT / 2 - 50)
+        draw_text("¿Jugar de nuevo? (Y/N)", WIDTH / 2 - 140, HEIGHT / 2 + 30)
+        pygame.display.flip()
+        pygame.time.delay(3000)  # Agrega un retraso de 3 segundos
+
+        if ask_play_again():
+            # Reinicia el juego
+            score_a = 0
+            score_b = 0
+            game_over = False
+            ball.x = WIDTH / 2 - BALL_SIZE / 2
+            ball.y = HEIGHT / 2 - BALL_SIZE / 2
+        else:
+            pygame.quit()
+            sys.exit()
