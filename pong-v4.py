@@ -43,6 +43,19 @@ def draw_score(score_a, score_b):
     draw_text(str(score_b), WIDTH / 2 + 40, 10)
 
 
+def ask_play_again():
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_y:
+                    return True
+                elif event.key == pygame.K_n:
+                    return False
+            elif event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+
 # Create screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pong-inspired Game")
