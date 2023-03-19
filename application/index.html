@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualización de datos</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="./library/d3.min.js"></script>
+    <script src="./library/d3.layout.cloud.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </head>
@@ -33,12 +35,17 @@
         <canvas id="citationsByYearChart"></canvas>
     </div>
 
-    <h2>Top 10 de losAutores más productivos</h2>
+    <h2>Top 10 de los autores más productivos</h2>
     <div class="chart-container">
         <canvas id="topAuthorsChart"></canvas>
     </div>
 
+    <svg id="word-cloud" width="960" height="600"></svg>
+    <div id="word-cloud"></div>
+
     <script src="app.js"></script>
+    <script src="keywords.js"></script>
+
 </body>
 
 </html>
