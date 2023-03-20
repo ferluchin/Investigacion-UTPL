@@ -141,36 +141,7 @@ function createCitationsByYearChart(yearCitationData) {
         options: chartOptions,
     });
 }
-/*
-function createTopCitedChart(titles, citations) {
-    const ctx = document.getElementById("topCitedChart").getContext("2d");
-    const chartData = {
-        labels: titles,
-        datasets: [
-            {
-                label: "Publicaciones más citadas",
-                data: citations,
-                backgroundColor: "rgba(255, 159, 64, 0.2)",
-                borderColor: "rgba(255, 159, 64, 1)",
-                borderWidth: 1,
-            },
-        ],
-    };
-    const chartOptions = {
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
-    };
 
-    new Chart(ctx, {
-        type: "bar",
-        data: chartData,
-        options: chartOptions,
-    });
-}
-*/
 function createTopCitedChart(titles, citations) {
     const ctx = document.getElementById("topCitedChart").getContext("2d");
     const maxTitleLength = 50; // Define la longitud máxima del título
@@ -254,5 +225,42 @@ function createYearCitationScatterChart(yearCitationData) {
     });
 }
 
+// Cantidad de publicaciones por institución
+function createChartByInstitution(institutions, numPublicationsByInstitution) {
+    const ctx = document.getElementById("publicationsByInstitutionChart").getContext("2d");
+    const chartData = {
+        labels: institutions,
+        datasets: [
+            {
+                label: "Cantidad de publicaciones por institución",
+                data: institutions.map((institution) => numPublicationsByInstitution[institution]),
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+    const chartOptions = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
 
-export { createChart, createChartBySource, createChartByAuthor, createCitationsByYearChart, createTopCitedChart, createYearCitationScatterChart };
+    new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+
+export { 
+    createChart, 
+    createChartBySource, 
+    createChartByAuthor, 
+    createCitationsByYearChart, 
+    createTopCitedChart, 
+    createYearCitationScatterChart,
+    createChartByInstitution
+};

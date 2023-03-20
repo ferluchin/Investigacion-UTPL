@@ -1,4 +1,12 @@
-import { processData, processDataBySource, processDataByAuthor, processDataByCitations, processDataByTopCited, processDataByYearAndCitations } from "./utils.js";
+import { 
+    processData, 
+    processDataBySource, 
+    processDataByAuthor, 
+    processDataByCitations, 
+    processDataByTopCited, 
+    processDataByYearAndCitations, 
+    processDataByInstitution 
+} from "./utils.js";
 
 // Leer el archivo CSV
 fetch("Combinado-WoS-Scopus.csv")
@@ -9,6 +17,7 @@ fetch("Combinado-WoS-Scopus.csv")
         processDataByAuthor(csvData); // Procesar datos para la tercera gráfica
         processDataByCitations(csvData); // Procesar datos para la cuarta gráfica
         processDataByTopCited(csvData); // Procesar datos para la quinta gráfica
-        processDataByYearAndCitations(csvData); // Procesar datos para el gráfico de dispersión
+        processDataByYearAndCitations(csvData); // Procesar datos para el gráfico de dispersión sexto gráfico
+        processDataByInstitution(csvData); // Procesar datos para la séptima gráfica
     })
     .catch((error) => console.error("Error al leer el archivo CSV:", error));
