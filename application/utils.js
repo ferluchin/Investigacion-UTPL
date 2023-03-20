@@ -1,4 +1,4 @@
-import { createChart, createChartBySource, createChartByAuthor, createCitationsByYearChart, createTopCitedChart } from "./charts.js";
+import { createChart, createChartBySource, createChartByAuthor, createCitationsByYearChart, createTopCitedChart, createYearCitationScatterChart } from "./charts.js";
 
 // Función para leer el archivo CSV y procesar los datos
 // Función para leer el archivo CSV y procesar los datos
@@ -115,6 +115,25 @@ function processDataByTopCited(csvData) {
         },
     });
 }
+
+function processDataByYearAndCitations(csvData) {
+    const yearCitationData = [];
+
+    Papa.parse(csvData, {
+        delimiter: ";",
+        header: true,
+        step: function (row) {
+            const year = parseInt(row.data.Year);
+            const citations = parseInt(row.data["Cited by"]);
+
+            yearCitationData.push({ x: year, y: citations });
+        },
+        complete: function () {
+            createYearCitationScatterChart(yearCitationData);
+        },
+    });
+}
+
 //
 //FIN LECTURA Y PROCESAMIENTO DE ARCHIVOS CSV
-export { processData, processDataBySource, processDataByAuthor, processDataByCitations, processDataByTopCited };
+export { processData, processDataBySource, processDataByAuthor, processDataByCitations, processDataByTopCited, processDataByYearAndCitations };

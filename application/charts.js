@@ -141,7 +141,7 @@ function createCitationsByYearChart(yearCitationData) {
         options: chartOptions,
     });
 }
-
+/*
 function createTopCitedChart(titles, citations) {
     const ctx = document.getElementById("topCitedChart").getContext("2d");
     const chartData = {
@@ -170,5 +170,89 @@ function createTopCitedChart(titles, citations) {
         options: chartOptions,
     });
 }
+*/
+function createTopCitedChart(titles, citations) {
+    const ctx = document.getElementById("topCitedChart").getContext("2d");
+    const maxTitleLength = 50; // Define la longitud máxima del título
+    const shortTitles = titles.map((title) => title.length > maxTitleLength ? title.substring(0, maxTitleLength) + '...' : title);
 
-export { createChart, createChartBySource, createChartByAuthor, createCitationsByYearChart, createTopCitedChart };
+    const chartData = {
+        labels: shortTitles,
+        datasets: [
+            {
+                label: "Publicaciones más citadas",
+                data: citations,
+                backgroundColor: "rgba(255, 159, 64, 0.2)",
+                borderColor: "rgba(255, 159, 64, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+    const chartOptions = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+            x: {
+                ticks: {
+                    maxRotation: 90, // Ángulo de rotación máximo de las etiquetas del eje x
+                    minRotation: 90, // Ángulo de rotación mínimo de las etiquetas del eje x
+                },
+            },
+        },
+    };
+
+    new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+
+function createYearCitationScatterChart(yearCitationData) {
+    const ctx = document.getElementById("yearCitationScatterChart").getContext("2d");
+    const chartData = {
+        datasets: [
+            {
+                label: "Citas por año de publicación",
+                data: yearCitationData,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+                pointRadius: 5, // Ajusta el tamaño de los puntos
+                pointHoverRadius: 15, // Ajusta el tamaño de los puntos al pasar el cursor sobre ellos
+                pointStyle: "circle", 
+            },
+        ],
+    };
+    const chartOptions = {
+        scales: {
+            x: {
+                type: "linear",
+                min: 2010,
+                max: 2023,
+                //beginAtZero: true,
+                title: {
+                    display: true,
+                    text: "Año",
+                },
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: "Citas",
+                },
+            },
+        },
+    };
+
+    new Chart(ctx, {
+        type: "scatter",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+
+
+export { createChart, createChartBySource, createChartByAuthor, createCitationsByYearChart, createTopCitedChart, createYearCitationScatterChart };
