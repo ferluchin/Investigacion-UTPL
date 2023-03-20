@@ -142,4 +142,33 @@ function createCitationsByYearChart(yearCitationData) {
     });
 }
 
-export { createChart, createChartBySource, createChartByAuthor, createCitationsByYearChart };
+function createTopCitedChart(titles, citations) {
+    const ctx = document.getElementById("topCitedChart").getContext("2d");
+    const chartData = {
+        labels: titles,
+        datasets: [
+            {
+                label: "Publicaciones más citadas",
+                data: citations,
+                backgroundColor: "rgba(255, 159, 64, 0.2)",
+                borderColor: "rgba(255, 159, 64, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+    const chartOptions = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
+
+    new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+
+export { createChart, createChartBySource, createChartByAuthor, createCitationsByYearChart, createTopCitedChart };
