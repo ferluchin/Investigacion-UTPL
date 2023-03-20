@@ -15,8 +15,14 @@
 <body>
 
 
-    <h1>Visualización de datos de artículos</h1>
-    <h2>Número de artículos por año (2020-2023)</h2>
+    <h1>
+        Visualización de datos de artículos
+    </h1>
+
+    <h2>
+        Número de artículos por año (2020-2023)
+    </h2>
+
     <div class="chart-container">
         <canvas id="chart1"></canvas>
     </div>
@@ -40,11 +46,13 @@
         <canvas id="topAuthorsChart"></canvas>
     </div>
 
+
+    <h2>Nube de Palabras Clave</h2>
     <svg id="word-cloud" width="960" height="600"></svg>
     <div id="word-cloud"></div>
 
-    <script src="app.js"></script>
-    <script src="keywords.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="keywords.js"></script>
 
 </body>
 
