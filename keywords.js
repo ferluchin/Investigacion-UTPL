@@ -26,7 +26,7 @@ function processData(csvData) {
         }
     }
 
-    console.log("Palabras clave extraídas:", Array.from(keywords));
+    //console.log("Palabras clave extraídas:", Array.from(keywords));
 }
 
 extractKeywords();

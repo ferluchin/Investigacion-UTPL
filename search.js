@@ -1,4 +1,6 @@
-import * as Papa from 'papaparse';
+//import * as Papa from 'papaparse';
+
+console.log('search.js cargado');
 
 document.getElementById('searchForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -10,20 +12,23 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     } else {
         search(keyword);
     }
+    return false; // Agrega esta línea
 });
 
 function search(keyword) {
+    console.log('Buscando:', keyword);
     Papa.parse('Combinado-WoS-Scopus.csv', {
         download: true,
         header: true,
         complete: function (results) {
+            console.log('Datos CSV cargados:', results.data);
             const data = results.data;
             const filteredData = data.filter(row => {
-                const title = row['Title'].toLowerCase();
-                const keywords = row['Keywords'].toLowerCase();
+                const title = row['Title'] ? row['Title'].toLowerCase() : '';
+                const keywords = row['Keywords'] ? row['Keywords'].toLowerCase() : '';
                 return title.includes(keyword) || keywords.includes(keyword);
             });
-
+            console.log('Datos filtrados:', filteredData);
             const authorsMap = new Map();
 
             filteredData.forEach(row => {
@@ -32,9 +37,11 @@ function search(keyword) {
                     if (!authorsMap.has(author)) {
                         authorsMap.set(author, []);
                     }
-                    authorsMap.get(author).push(row['title']);
+                    authorsMap.get(author).push(row['Title']);
                 });
             });
+
+            console.log('Mapa de autores:', authorsMap); // Agrega esto
 
             const searchResultsTable = document.getElementById('searchResultsTable');
             const tbody = searchResultsTable.querySelector('tbody');
@@ -52,6 +59,9 @@ function search(keyword) {
 
                 tbody.appendChild(tr);
             });
-        }
+        },
+        error: function (err, file, inputElem, reason) { // Agrega esto
+            console.error('Error al cargar el archivo CSV:', err); // Agrega esto
+        } // Agrega esto
     });
 }

@@ -14,119 +14,118 @@
 </head>
 
 <body>
-    <h1>
-        Visualización de datos de artículos
-    </h1>
+    <div class="container">
+        <h1 class="text-center my-4">
+            Visualización de datos de artículos
+        </h1>
 
-    <!-- Sección de búsqueda -->
-    <h2>Buscar autores y artículos por palabra clave o título</h2>
-    <form id="searchForm">
-        <label for="searchInput">Palabra clave o título:</label>
-        <input type="text" id="searchInput">
-        <button type="submit">Buscar</button>
-    </form>
+        <!-- Sección de búsqueda -->
+        <div class="text-center my-4">
+            <h2>Buscar autores y artículos por palabra clave o título</h2>
+            <a href="search.html" class="btn btn-primary">Ir a la página de búsqueda</a>
+        </div>
 
-    <!-- Tabla de resultados -->
-    <h2>Resultados de la búsqueda</h2>
-    <table id="searchResultsTable">
-        <thead>
-            <tr>
-                <th>Autor</th>
-                <th>Artículos relacionados</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+        <!-- Sección de gráficos -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="my-4">Número de artículos por año (2010-2023)</h2>
+                <div class="chart-container">
+                    <canvas id="chart1"></canvas>
+                </div>
+                <p class="scatter-description">
+                    Este gráfico muestra el número de artículos publicados por año, desde 2010 hasta 2023. La
+                    visualización permite
+                    identificar tendencias y variaciones en la producción de artículos a lo largo del tiempo.
+                </p>
+            </div>
+        </div>
+        <h2>
+            Cantidad de publicaciones por fuente Scopus - Web of Science - WoS y Scopus
+        </h2>
+        <div class="chart-container">
+            <canvas id="publicationsBySourceChart"></canvas>
+        </div>
+        <p class="scatter-description">
+            Este gráfico compara la cantidad de publicaciones en las fuentes Scopus, Web of Science y en ambos.
+            Permite
+            analizar la distribución de las publicaciones entre las diferentes bases de datos.
+        </p>
 
+        <h2>
+            Relación entre el año de publicación y las citas
+        </h2>
+        <div class="chart-container">
+            <canvas id="citationsByYearChart"></canvas>
+        </div>
+        <p class="scatter-description">
+            Este gráfico muestra la relación entre el año de publicación y las citas recibidas. Permite analizar si
+            existe
+            una correlación entre el año de publicación y la cantidad de citas que un artículo recibe.
+        </p>
 
-
-    <h2>
-        Número de artículos por año (2010-2023)
-    </h2>
-    <div class="chart-container">
-        <canvas id="chart1"></canvas>
-    </div>
-    <p class="scatter-description">
-        Este gráfico muestra el número de artículos publicados por año, desde 2010 hasta 2023. La visualización permite
-        identificar tendencias y variaciones en la producción de artículos a lo largo del tiempo.
-    </p>
-
-    <h2>
-        Cantidad de publicaciones por fuente Scopus - Web of Science - WoS y Scopus
-    </h2>
-    <div class="chart-container">
-        <canvas id="publicationsBySourceChart"></canvas>
-    </div>
-    <p class="scatter-description">
-        Este gráfico compara la cantidad de publicaciones en las fuentes Scopus, Web of Science y en ambos. Permite
-        analizar la distribución de las publicaciones entre las diferentes bases de datos.
-    </p>
-
-    <h2>
-        Relación entre el año de publicación y las citas
-    </h2>
-    <div class="chart-container">
-        <canvas id="citationsByYearChart"></canvas>
-    </div>
-    <p class="scatter-description">
-        Este gráfico muestra la relación entre el año de publicación y las citas recibidas. Permite analizar si existe
-        una correlación entre el año de publicación y la cantidad de citas que un artículo recibe.
-    </p>
-
-    <h2>Top 10 de los autores más productivos</h2>
-    <div class="chart-container">
-        <canvas id="topAuthorsChart"></canvas>
-    </div>
-    <p class="scatter-description">
-        Este gráfico presenta el top 10 de los autores más productivos en función del número de publicaciones. La
-        visualización destaca a los autores que han contribuido significativamente a la investigación en la Universidad.
-    </p>
+        <h2>Top 10 de los autores más productivos</h2>
+        <div class="chart-container">
+            <canvas id="topAuthorsChart"></canvas>
+        </div>
+        <p class="scatter-description">
+            Este gráfico presenta el top 10 de los autores más productivos en función del número de publicaciones.
+            La
+            visualización destaca a los autores que han contribuido significativamente a la investigación en la
+            Universidad.
+        </p>
 
 
-    <h2>Top 10 Cited Chart</h2>
-    <div class="chart-container">
-        <canvas id="topCitedChart"></canvas>
-    </div>
-    <p class="scatter-description">
-        Este gráfico muestra el top 10 de los artículos más citados. La visualización permite identificar los trabajos
-        que han tenido un mayor impacto en el campo de estudio, en función de la cantidad de citas recibidas.
-    </p>
+        <h2>Top 10 Cited Chart</h2>
+        <div class="chart-container">
+            <canvas id="topCitedChart"></canvas>
+        </div>
+        <p class="scatter-description">
+            Este gráfico muestra el top 10 de los artículos más citados. La visualización permite identificar los
+            trabajos
+            que han tenido un mayor impacto en el campo de estudio, en función de la cantidad de citas recibidas.
+        </p>
 
-    <h2>Año de publicación y las citas</h2>
-    <div class="chart-container">
-        <canvas id="yearCitationScatterChart"></canvas>
-    </div>
-    <p class="scatter-description">
-        Este gráfico de dispersión muestra la relación entre el año de publicación y la cantidad de citas que han
-        recibido
-        las publicaciones. Al representar los datos de esta manera, se pueden identificar posibles tendencias o
-        patrones,
-        como si las publicaciones más recientes tienden a tener más citas que las antiguas, o si hay una distribución
-        uniforme de citas a lo largo del tiempo. Un gráfico de dispersión es útil para mostrar la distribución de los
-        datos
-        en dos dimensiones y para identificar correlaciones, agrupaciones o posibles outliers. En este caso específico,
-        permite evaluar el impacto de las publicaciones a lo largo del tiempo en función de la cantidad de citas que
-        reciben.
-    </p>
+        <h2>Año de publicación y las citas</h2>
+        <div class="chart-container">
+            <canvas id="yearCitationScatterChart"></canvas>
+        </div>
+        <p class="scatter-description">
+            Este gráfico de dispersión muestra la relación entre el año de publicación y la cantidad de citas que
+            han
+            recibido
+            las publicaciones. Al representar los datos de esta manera, se pueden identificar posibles tendencias o
+            patrones,
+            como si las publicaciones más recientes tienden a tener más citas que las antiguas, o si hay una
+            distribución
+            uniforme de citas a lo largo del tiempo. Un gráfico de dispersión es útil para mostrar la distribución
+            de los
+            datos
+            en dos dimensiones y para identificar correlaciones, agrupaciones o posibles outliers. En este caso
+            específico,
+            permite evaluar el impacto de las publicaciones a lo largo del tiempo en función de la cantidad de citas
+            que
+            reciben.
+        </p>
 
-    <h2>Cantidad de publicaciones por afiliación institucional</h2>
-    <div class="chart-container">
-        <canvas id="publicationsByInstitutionChart"></canvas>
-    </div>
+        <h2>Cantidad de publicaciones por afiliación institucional</h2>
+        <div class="chart-container">
+            <canvas id="publicationsByInstitutionChart"></canvas>
+        </div>
 
-    <h2>Nube de Palabras Clave</h2>
-    <svg id="word-cloud" width="960" height="600"></svg>
-    <div id="word-cloud"></div>
+        <h2>Nube de Palabras Clave</h2>
+        <svg id="word-cloud" width="960" height="600"></svg>
+        <div id="word-cloud"></div>
 
 
 
-    <script src="dist/bundle.js"></script>
-    <!-- <script type="module" src="app.js"></script>
+        <!-- <script src="dist/bundle.js"></script> -->
+        <!-- <script type="module" src="app.js"></script>
     <script type="module" src="search.js"></script> -->
+        <script type="module" src="app.js"></script>
+        <script type="module" src="search.js"></script>
+        <script type="module" src="keywords.js"></script>
 
-    <script type="module" src="keywords.js"></script>
-
+    </div>
 </body>
 
 </html>
