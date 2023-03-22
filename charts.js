@@ -192,7 +192,7 @@ function createYearCitationScatterChart(yearCitationData) {
                 borderWidth: 1,
                 pointRadius: 5, // Ajusta el tamaño de los puntos
                 pointHoverRadius: 15, // Ajusta el tamaño de los puntos al pasar el cursor sobre ellos
-                pointStyle: "circle", 
+                pointStyle: "circle",
             },
         ],
     };
@@ -226,6 +226,7 @@ function createYearCitationScatterChart(yearCitationData) {
 }
 
 // Cantidad de publicaciones por institución
+/*
 function createChartByInstitution(institutions, numPublicationsByInstitution) {
     const ctx = document.getElementById("publicationsByInstitutionChart").getContext("2d");
     const chartData = {
@@ -254,13 +255,65 @@ function createChartByInstitution(institutions, numPublicationsByInstitution) {
         options: chartOptions,
     });
 }
+*/
 
-export { 
-    createChart, 
-    createChartBySource, 
-    createChartByAuthor, 
-    createCitationsByYearChart, 
-    createTopCitedChart, 
+function filterInstitutions(institutions, numPublicationsByInstitution, filter, topN) {
+    const filteredInstitutions = institutions.filter(
+        (institution) => !institution.includes(filter)
+    );
+
+    return filteredInstitutions
+        .sort(
+            (a, b) =>
+                numPublicationsByInstitution[b] - numPublicationsByInstitution[a]
+        )
+        .slice(0, topN);
+}
+
+
+function createChartByInstitution(institutions, numPublicationsByInstitution) {
+    //    const filteredInstitutions = filterInstitutions(institutions, "Universidad Técnica Particular de Loja");
+
+    const filteredInstitutions = filterInstitutions(
+        institutions,
+        numPublicationsByInstitution,
+        "Universidad Técnica Particular de Loja",
+        10
+    );
+    const ctx = document.getElementById("publicationsByInstitutionChart").getContext("2d");
+    const chartData = {
+        labels: filteredInstitutions,
+        datasets: [
+            {
+                label: "Cantidad de publicaciones por institución",
+                data: filteredInstitutions.map((institution) => numPublicationsByInstitution[institution]),
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+            },
+        ],
+    };
+    const chartOptions = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    };
+
+    new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+
+export {
+    createChart,
+    createChartBySource,
+    createChartByAuthor,
+    createCitationsByYearChart,
+    createTopCitedChart,
     createYearCitationScatterChart,
     createChartByInstitution
 };
