@@ -2,18 +2,21 @@
 
 console.log('search.js cargado');
 
-document.getElementById('searchForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const searchInput = document.getElementById('searchInput');
-    const keyword = searchInput.value.trim().toLowerCase();
+window.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const searchInput = document.getElementById('searchInput');
+        const keyword = searchInput.value.trim().toLowerCase();
 
-    if (keyword === '') {
-        alert('Por favor, ingrese una palabra clave o título para buscar.');
-    } else {
-        search(keyword);
-    }
-    return false; // Agrega esta línea
+        if (keyword === '') {
+            alert('Por favor, ingrese una palabra clave o título para buscar.');
+        } else {
+            search(keyword);
+        }
+        return false; // Agrega esta línea
+    });
 });
+
 
 function search(keyword) {
     console.log('Buscando:', keyword);

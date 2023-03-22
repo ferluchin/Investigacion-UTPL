@@ -14,16 +14,18 @@
 </head>
 
 <body>
+
+    <!-- Barra de navegación -->
+
+    <div id="navbar-container"></div>
+
+    <!-- Contenido de la página -->
     <div class="container">
         <h1 class="text-center my-4">
-            Visualización de datos de artículos
+            Visualización de datos de artículos de investigación
         </h1>
 
-        <!-- Sección de búsqueda -->
-        <div class="text-center my-4">
-            <h2>Buscar autores y artículos por palabra clave o título</h2>
-            <a href="search.html" class="btn btn-primary">Ir a la página de búsqueda</a>
-        </div>
+
 
         <!-- Sección de gráficos -->
         <div class="row">
@@ -120,7 +122,16 @@
 
         <!-- <script src="dist/bundle.js"></script> -->
         <!-- <script type="module" src="app.js"></script>
-    <script type="module" src="search.js"></script> -->
+        <script type="module" src="search.js"></script> -->
+
+        <script>
+            async function loadNavbar() {
+                const response = await fetch('navbar.html');
+                const navbarContent = await response.text();
+                document.getElementById('navbar-container').innerHTML = navbarContent;
+            }
+            loadNavbar();
+        </script>
         <script type="module" src="app.js"></script>
         <script type="module" src="search.js"></script>
         <script type="module" src="keywords.js"></script>

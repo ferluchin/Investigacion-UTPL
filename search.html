@@ -11,6 +11,9 @@
 </head>
 
 <body>
+
+    <div id="navbar-container"></div>
+
     <div class="container">
         <h1 class="text-center my-4">
             Búsqueda de Autores y Artículos
@@ -44,6 +47,14 @@
         </div>
     </div>
 
+    <script>
+        async function loadNavbar() {
+            const response = await fetch('navbar.html');
+            const navbarContent = await response.text();
+            document.getElementById('navbar-container').innerHTML = navbarContent;
+        }
+        loadNavbar();
+    </script>
     <script type="module" src="search.js"></script>
 </body>
 
