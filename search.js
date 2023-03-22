@@ -17,7 +17,6 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 function search(keyword) {
     console.log('Buscando:', keyword);
     Papa.parse('Combinado-WoS-Scopus.csv', {
@@ -28,43 +27,70 @@ function search(keyword) {
             const data = results.data;
             const filteredData = data.filter(row => {
                 const title = row['Title'] ? row['Title'].toLowerCase() : '';
-                const keywords = row['Keywords'] ? row['Keywords'].toLowerCase() : '';
+                const keywords = row['Author Keywords'] ? row['Author Keywords'].toLowerCase() : '';
                 return title.includes(keyword) || keywords.includes(keyword);
             });
             console.log('Datos filtrados:', filteredData);
-            const authorsMap = new Map();
+
+            const titlesMap = new Map();
 
             filteredData.forEach(row => {
-                const authors = row['Authors'].split(', ');
-                authors.forEach(author => {
-                    if (!authorsMap.has(author)) {
-                        authorsMap.set(author, []);
-                    }
-                    authorsMap.get(author).push(row['Title']);
-                });
+                const authors = row['Authors'];
+                const title = row['Title'];
+                const keywords = row['Author Keywords'];
+                const citations = row['Cited by'];
+                if (!titlesMap.has(title)) {
+                    titlesMap.set(title, { authors: [], keywords, citations });
+                }
+                titlesMap.get(title).authors.push(authors);
             });
 
-            console.log('Mapa de autores:', authorsMap); // Agrega esto
+            console.log('Mapa de títulos:', titlesMap);
 
             const searchResultsTable = document.getElementById('searchResultsTable');
             const tbody = searchResultsTable.querySelector('tbody');
             tbody.innerHTML = '';
 
-            authorsMap.forEach((titles, author) => {
-                const tr = document.createElement('tr');
-                const authorTd = document.createElement('td');
-                authorTd.textContent = author;
-                tr.appendChild(authorTd);
+            // Modificación
+            const sortedResults = Array.from(titlesMap, ([title, data]) => {
+                const authors = [...new Set(data.authors.map(a => a.split(', ')).flat())].join(', ');
+                const keywords = data.keywords;
+                const citations = data.citations;
 
-                const titlesTd = document.createElement('td');
-                titlesTd.innerHTML = titles.join('<br>');
-                tr.appendChild(titlesTd);
+                return {
+                    title,
+                    authors,
+                    keywords,
+                    citations
+                };
+            }).sort((a, b) => b.citations - a.citations);
+            console.log('Resultados ordenados:', sortedResults);
+
+            sortedResults.forEach(data => {
+                const tr = document.createElement('tr');
+                const titleTd = document.createElement('td');
+                titleTd.textContent = data.title;
+                tr.appendChild(titleTd);
+
+                const authorsTd = document.createElement('td');
+                authorsTd.innerHTML = data.authors;
+                tr.appendChild(authorsTd);
+
+                // Agrega la columna de palabras clave
+                const keywordsTd = document.createElement('td');
+                keywordsTd.innerHTML = data.keywords;
+                tr.appendChild(keywordsTd);
+
+                // Agrega la columna de citas
+                const citationsTd = document.createElement('td');
+                citationsTd.innerHTML = data.citations;
+                tr.appendChild(citationsTd);
 
                 tbody.appendChild(tr);
             });
         },
-        error: function (err, file, inputElem, reason) { // Agrega esto
-            console.error('Error al cargar el archivo CSV:', err); // Agrega esto
-        } // Agrega esto
+        error: function (err, file, inputElem, reason) {
+            console.error('Error al cargar el archivo CSV:', err);
+        }
     });
 }

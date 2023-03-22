@@ -19,7 +19,9 @@ p {
 }
 
 .chart-container {
+    /* width: 80%; */
     width: 80%;
+    
     margin: 0 auto;
 }
 
@@ -30,4 +32,10 @@ p {
     text-align: justify;
     line-height: 1.6;
     padding: 20px;
+}
+
+.tech-logo {
+    width: 100px;
+    height: auto;
+    margin: 10px 0;
 }

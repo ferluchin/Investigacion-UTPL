@@ -160,6 +160,7 @@ function createTopCitedChart(titles, citations) {
         ],
     };
     const chartOptions = {
+        maintainAspectRatio: false,
         scales: {
             y: {
                 beginAtZero: true,
@@ -168,6 +169,9 @@ function createTopCitedChart(titles, citations) {
                 ticks: {
                     maxRotation: 90, // Ángulo de rotación máximo de las etiquetas del eje x
                     minRotation: 90, // Ángulo de rotación mínimo de las etiquetas del eje x
+                    font: {
+                        size: 10,
+                    } 
                 },
             },
         },
