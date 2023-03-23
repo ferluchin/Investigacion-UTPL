@@ -1,19 +1,41 @@
 
 // Función para crear el gráfico utilizando Chart.js
-function createChart(years, numArticlesByYear) {
+
+function createChartByYearAndSource(years, numArticlesByYearAndSource) {
     const ctx = document.getElementById('chart1').getContext('2d');
+
+    // Extraer datos para cada fuente
+    const scopusData = years.map((year) => numArticlesByYearAndSource[year]?.['Scopus'] || 0);
+    const wosData = years.map((year) => numArticlesByYearAndSource[year]?.['Web of Science'] || 0);
+    const bothData = years.map((year) => numArticlesByYearAndSource[year]?.['Scopus, Web of Science'] || 0);
+
     const chartData = {
         labels: years,
         datasets: [
             {
-                label: 'Número de artículos por año',
-                data: years.map((year) => numArticlesByYear[year]),
+                label: 'Scopus',
+                data: scopusData,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1,
             },
+            {
+                label: 'Web of Science',
+                data: wosData,
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Ambas',
+                data: bothData,
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1,
+            },
         ],
     };
+
     const chartOptions = {
         scales: {
             y: {
@@ -28,6 +50,7 @@ function createChart(years, numArticlesByYear) {
         options: chartOptions,
     });
 }
+
 
 // función createChartBySource para crear la segunda gráfica utilizando Chart.js:
 function createChartBySource(sources, numArticlesBySource) {
@@ -230,37 +253,6 @@ function createYearCitationScatterChart(yearCitationData) {
 }
 
 // Cantidad de publicaciones por institución
-/*
-function createChartByInstitution(institutions, numPublicationsByInstitution) {
-    const ctx = document.getElementById("publicationsByInstitutionChart").getContext("2d");
-    const chartData = {
-        labels: institutions,
-        datasets: [
-            {
-                label: "Cantidad de publicaciones por institución",
-                data: institutions.map((institution) => numPublicationsByInstitution[institution]),
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 1,
-            },
-        ],
-    };
-    const chartOptions = {
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
-    };
-
-    new Chart(ctx, {
-        type: "bar",
-        data: chartData,
-        options: chartOptions,
-    });
-}
-*/
-
 function filterInstitutions(institutions, numPublicationsByInstitution, filter, topN) {
     const filteredInstitutions = institutions.filter(
         (institution) => !institution.includes(filter)
@@ -313,7 +305,7 @@ function createChartByInstitution(institutions, numPublicationsByInstitution) {
 }
 
 export {
-    createChart,
+    createChartByYearAndSource,
     createChartBySource,
     createChartByAuthor,
     createCitationsByYearChart,

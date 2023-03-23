@@ -1,5 +1,6 @@
 import { 
-    processData, 
+    //processData, 
+    processDataByYearAndSource,
     processDataBySource, 
     processDataByAuthor, 
     processDataByCitations, 
@@ -12,7 +13,8 @@ import {
 fetch("Combinado-WoS-Scopus.csv")
     .then((response) => response.text())
     .then((csvData) => {
-        processData(csvData); // Procesar datos para la primera gráfica
+        //processData(csvData); // Procesar datos para la primera gráfica
+        processDataByYearAndSource(csvData); // Procesar datos para la primera gráfica (año y fuente)
         processDataBySource(csvData); // Procesar datos para la segunda gráfica
         processDataByAuthor(csvData); // Procesar datos para la tercera gráfica
         processDataByCitations(csvData); // Procesar datos para la cuarta gráfica
