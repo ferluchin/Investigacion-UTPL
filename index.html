@@ -67,6 +67,24 @@
         </p>
 
         <h2>Top 10 de los autores más productivos</h2>
+
+
+        <h3>Seleccione el año:</h3>
+        <select id="yearSelector">
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+
+        </select>
+
+
+
         <div class="chart-container">
             <canvas id="topAuthorsChart"></canvas>
         </div>
@@ -120,12 +138,26 @@
         <svg id="word-cloud" width="960" height="600"></svg>
         <div id="word-cloud"></div>
 
-        <script>
+        <script type="module">
+            import {fetchAndProcessData} from './app.js';
+
+            fetchAndProcessData().then(csvData => {
+                const yearSelector = document.getElementById("yearSelector");
+                yearSelector.addEventListener("change", function () {
+                    const selectedYear = yearSelector.value;
+                    //processDataByAuthor(csvData, selectedYear);
+                    fetchAndProcessData().then((processDataByAuthorWithYear) => {
+                        processDataByAuthorWithYear(selectedYear);
+                    });
+                });
+            });
+
             async function loadNavbar() {
                 const response = await fetch('navbar.html');
                 const navbarContent = await response.text();
                 document.getElementById('navbar-container').innerHTML = navbarContent;
             }
+
             loadNavbar();
         </script>
         <script type="module" src="app.js"></script>

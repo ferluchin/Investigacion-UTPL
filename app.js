@@ -1,25 +1,33 @@
-import { 
-    //processData, 
+import {
     processDataByYearAndSource,
-    processDataBySource, 
-    processDataByAuthor, 
-    processDataByCitations, 
-    processDataByTopCited, 
-    processDataByYearAndCitations, 
-    processDataByInstitution 
+    processDataBySource,
+    processDataByAuthor,
+    processDataByCitations,
+    processDataByTopCited,
+    processDataByYearAndCitations,
+    processDataByInstitution,
 } from "./utils.js";
 
 // Leer el archivo CSV
-fetch("Combinado-WoS-Scopus.csv")
-    .then((response) => response.text())
-    .then((csvData) => {
-        //processData(csvData); // Procesar datos para la primera gráfica
-        processDataByYearAndSource(csvData); // Procesar datos para la primera gráfica (año y fuente)
-        processDataBySource(csvData); // Procesar datos para la segunda gráfica
-        processDataByAuthor(csvData); // Procesar datos para la tercera gráfica
-        processDataByCitations(csvData); // Procesar datos para la cuarta gráfica
-        processDataByTopCited(csvData); // Procesar datos para la quinta gráfica
-        processDataByYearAndCitations(csvData); // Procesar datos para el gráfico de dispersión sexto gráfico
-        processDataByInstitution(csvData); // Procesar datos para la séptima gráfica
-    })
-    .catch((error) => console.error("Error al leer el archivo CSV:", error));
+function fetchAndProcessData() {
+    return fetch("Combinado-WoS-Scopus.csv")
+        .then((response) => response.text())
+        .then((csvData) => {
+            processDataByYearAndSource(csvData);
+            processDataBySource(csvData);
+            processDataByAuthor(csvData);
+            processDataByCitations(csvData);
+            processDataByTopCited(csvData);
+            processDataByYearAndCitations(csvData);
+            processDataByInstitution(csvData);
+            // Devuelve una función que acepta un parámetro 'year'
+            return function (year) {
+                processDataByAuthor(csvData, year);
+            };
+        })
+        .catch((error) =>
+            console.error("Error al leer el archivo CSV:", error)
+        );
+}
+
+export { fetchAndProcessData };

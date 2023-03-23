@@ -1,36 +1,42 @@
-
 // Función para crear el gráfico utilizando Chart.js
 
 function createChartByYearAndSource(years, numArticlesByYearAndSource) {
-    const ctx = document.getElementById('chart1').getContext('2d');
+    const ctx = document.getElementById("chart1").getContext("2d");
 
     // Extraer datos para cada fuente
-    const scopusData = years.map((year) => numArticlesByYearAndSource[year]?.['Scopus'] || 0);
-    const wosData = years.map((year) => numArticlesByYearAndSource[year]?.['Web of Science'] || 0);
-    const bothData = years.map((year) => numArticlesByYearAndSource[year]?.['Scopus, Web of Science'] || 0);
+    const scopusData = years.map(
+        (year) => numArticlesByYearAndSource[year]?.["Scopus"] || 0
+    );
+    const wosData = years.map(
+        (year) => numArticlesByYearAndSource[year]?.["Web of Science"] || 0
+    );
+    const bothData = years.map(
+        (year) =>
+            numArticlesByYearAndSource[year]?.["Scopus, Web of Science"] || 0
+    );
 
     const chartData = {
         labels: years,
         datasets: [
             {
-                label: 'Scopus',
+                label: "Scopus",
                 data: scopusData,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
                 borderWidth: 1,
             },
             {
-                label: 'Web of Science',
+                label: "Web of Science",
                 data: wosData,
-                backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                borderColor: 'rgba(255, 206, 86, 1)',
+                backgroundColor: "rgba(255, 206, 86, 0.2)",
+                borderColor: "rgba(255, 206, 86, 1)",
                 borderWidth: 1,
             },
             {
-                label: 'Ambas',
+                label: "Ambas",
                 data: bothData,
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: "rgba(153, 102, 255, 0.2)",
+                borderColor: "rgba(153, 102, 255, 1)",
                 borderWidth: 1,
             },
         ],
@@ -45,23 +51,27 @@ function createChartByYearAndSource(years, numArticlesByYearAndSource) {
     };
 
     new Chart(ctx, {
-        type: 'bar',
+        type: "bar",
         data: chartData,
         options: chartOptions,
     });
 }
 
-
 // función createChartBySource para crear la segunda gráfica utilizando Chart.js:
 function createChartBySource(sources, numArticlesBySource) {
-    const ctx = document.getElementById("publicationsBySourceChart").getContext("2d");
+    const ctx = document
+        .getElementById("publicationsBySourceChart")
+        .getContext("2d");
     const chartData = {
         labels: sources,
         datasets: [
             {
                 label: "Cantidad de publicaciones por fuente",
                 data: sources.map((source) => numArticlesBySource[source]),
-                backgroundColor: ["rgba(75, 192, 192, 0.2)", "rgba(255, 206, 86, 0.2)"],
+                backgroundColor: [
+                    "rgba(75, 192, 192, 0.2)",
+                    "rgba(255, 206, 86, 0.2)",
+                ],
                 borderColor: ["rgba(75, 192, 192, 1)", "rgba(255, 206, 86, 1)"],
                 borderWidth: 1,
             },
@@ -82,11 +92,15 @@ function createChartBySource(sources, numArticlesBySource) {
     });
 }
 
-//función createChartByAuthor para crear la tercera gráfica utilizando Chart.js. 
-//Esta función también ordenará a los autores por la cantidad de publicaciones y tomará solo los N autores más productivos 
+//función createChartByAuthor para crear la tercera gráfica utilizando Chart.js.
+//Esta función también ordenará a los autores por la cantidad de publicaciones y tomará solo los N autores más productivos
 //(en este ejemplo, N = 10):
 
-function createChartByAuthor(numArticlesByAuthor) {
+function createChartByAuthor(numArticlesByAuthor, year) {
+    if (typeof topAuthorsChart !== "undefined" && topAuthorsChart !== null) {
+        topAuthorsChart.destroy();
+    }
+
     // Ordenar autores por cantidad de publicaciones y tomar solo los 10 primeros
     const topAuthors = Object.entries(numArticlesByAuthor)
         .sort((a, b) => b[1] - a[1])
@@ -100,7 +114,7 @@ function createChartByAuthor(numArticlesByAuthor) {
         labels: authors,
         datasets: [
             {
-                label: "Autores más productivos",
+                label: `Autores más productivos (${year})`,
                 data: numArticles,
                 backgroundColor: "rgba(153, 102, 255, 0.2)",
                 borderColor: "rgba(153, 102, 255, 1)",
@@ -116,17 +130,18 @@ function createChartByAuthor(numArticlesByAuthor) {
         },
     };
 
-    new Chart(ctx, {
+    topAuthorsChart = new Chart(ctx, {
         type: "bar",
         data: chartData,
         options: chartOptions,
     });
 }
-
 //función createCitationsByYearChart para crear la cuarta gráfica utilizando Chart.js:
 
 function createCitationsByYearChart(yearCitationData) {
-    const ctx = document.getElementById("citationsByYearChart").getContext("2d");
+    const ctx = document
+        .getElementById("citationsByYearChart")
+        .getContext("2d");
     const chartData = {
         datasets: [
             {
@@ -168,7 +183,11 @@ function createCitationsByYearChart(yearCitationData) {
 function createTopCitedChart(titles, citations) {
     const ctx = document.getElementById("topCitedChart").getContext("2d");
     const maxTitleLength = 50; // Define la longitud máxima del título
-    const shortTitles = titles.map((title) => title.length > maxTitleLength ? title.substring(0, maxTitleLength) + '...' : title);
+    const shortTitles = titles.map((title) =>
+        title.length > maxTitleLength
+            ? title.substring(0, maxTitleLength) + "..."
+            : title
+    );
 
     const chartData = {
         labels: shortTitles,
@@ -194,7 +213,7 @@ function createTopCitedChart(titles, citations) {
                     minRotation: 90, // Ángulo de rotación mínimo de las etiquetas del eje x
                     font: {
                         size: 10,
-                    } 
+                    },
                 },
             },
         },
@@ -208,7 +227,9 @@ function createTopCitedChart(titles, citations) {
 }
 
 function createYearCitationScatterChart(yearCitationData) {
-    const ctx = document.getElementById("yearCitationScatterChart").getContext("2d");
+    const ctx = document
+        .getElementById("yearCitationScatterChart")
+        .getContext("2d");
     const chartData = {
         datasets: [
             {
@@ -253,7 +274,12 @@ function createYearCitationScatterChart(yearCitationData) {
 }
 
 // Cantidad de publicaciones por institución
-function filterInstitutions(institutions, numPublicationsByInstitution, filter, topN) {
+function filterInstitutions(
+    institutions,
+    numPublicationsByInstitution,
+    filter,
+    topN
+) {
     const filteredInstitutions = institutions.filter(
         (institution) => !institution.includes(filter)
     );
@@ -261,11 +287,11 @@ function filterInstitutions(institutions, numPublicationsByInstitution, filter, 
     return filteredInstitutions
         .sort(
             (a, b) =>
-                numPublicationsByInstitution[b] - numPublicationsByInstitution[a]
+                numPublicationsByInstitution[b] -
+                numPublicationsByInstitution[a]
         )
         .slice(0, topN);
 }
-
 
 function createChartByInstitution(institutions, numPublicationsByInstitution) {
     //    const filteredInstitutions = filterInstitutions(institutions, "Universidad Técnica Particular de Loja");
@@ -276,13 +302,17 @@ function createChartByInstitution(institutions, numPublicationsByInstitution) {
         "Universidad Técnica Particular de Loja",
         10
     );
-    const ctx = document.getElementById("publicationsByInstitutionChart").getContext("2d");
+    const ctx = document
+        .getElementById("publicationsByInstitutionChart")
+        .getContext("2d");
     const chartData = {
         labels: filteredInstitutions,
         datasets: [
             {
                 label: "Cantidad de publicaciones por institución",
-                data: filteredInstitutions.map((institution) => numPublicationsByInstitution[institution]),
+                data: filteredInstitutions.map(
+                    (institution) => numPublicationsByInstitution[institution]
+                ),
                 backgroundColor: "rgba(54, 162, 235, 0.2)",
                 borderColor: "rgba(54, 162, 235, 1)",
                 borderWidth: 1,
@@ -304,6 +334,8 @@ function createChartByInstitution(institutions, numPublicationsByInstitution) {
     });
 }
 
+let topAuthorsChart = null;
+
 export {
     createChartByYearAndSource,
     createChartBySource,
@@ -311,5 +343,5 @@ export {
     createCitationsByYearChart,
     createTopCitedChart,
     createYearCitationScatterChart,
-    createChartByInstitution
+    createChartByInstitution,
 };

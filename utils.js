@@ -1,12 +1,11 @@
 import {
-    //createChart,
     createChartBySource,
     createChartByAuthor,
     createCitationsByYearChart,
     createTopCitedChart,
     createYearCitationScatterChart,
     createChartByInstitution,
-    createChartByYearAndSource
+    createChartByYearAndSource,
 } from "./charts.js";
 
 // Función para leer el archivo CSV y procesar los datos
@@ -42,46 +41,13 @@ function processDataByYearAndSource(csvData) {
             }
         },
         complete: function () {
-            createChartByYearAndSource(Array.from(years).sort(), numArticlesByYearAndSource);
+            createChartByYearAndSource(
+                Array.from(years).sort(),
+                numArticlesByYearAndSource
+            );
         },
     });
 }
-
-
-/*
-function processDataByYearAndSource(csvData) {
-    const years = new Set();
-    const sources = new Set();
-    const numArticlesByYearAndSource = {};
-
-    Papa.parse(csvData, {
-        header: true,
-        step: function (row) {
-            const year = row.data.Year;
-            const source = row.data.Fuente;
-
-            if (!years.has(year)) {
-                years.add(year);
-            }
-
-            if (!sources.has(source)) {
-                sources.add(source);
-            }
-
-            const yearSourceKey = `${year}-${source}`;
-
-            if (!numArticlesByYearAndSource.hasOwnProperty(yearSourceKey)) {
-                numArticlesByYearAndSource[yearSourceKey] = 1;
-            } else {
-                numArticlesByYearAndSource[yearSourceKey]++;
-            }
-        },
-        complete: function () {
-            createChartByYearAndSource(Array.from(years).sort(), Array.from(sources).sort(), numArticlesByYearAndSource);
-        },
-    });
-}
-*/
 /*
 función processDataBySource para procesar el CSV y contar las publicaciones por fuente:
 */
@@ -102,31 +68,42 @@ function processDataBySource(csvData) {
             }
         },
         complete: function () {
-            createChartBySource(Array.from(sources).sort(), numArticlesBySource);
+            createChartBySource(
+                Array.from(sources).sort(),
+                numArticlesBySource
+            );
         },
     });
 }
 //Crea una nueva función processDataByAuthor para procesar el CSV y contar las publicaciones por autor:
-function processDataByAuthor(csvData) {
+
+function processDataByAuthor(csvData, year) {
     const numArticlesByAuthor = {};
 
     Papa.parse(csvData, {
         header: true,
         step: function (row) {
             const authors = row.data.Authors.split(", ");
+            const publicationYear = row.data.Year;
 
-            authors.forEach((author) => {
-                if (author.length > 1) { // Asegurarse de que el nombre del autor tenga más de un carácter
-                    if (!numArticlesByAuthor.hasOwnProperty(author)) {
-                        numArticlesByAuthor[author] = 1;
-                    } else {
-                        numArticlesByAuthor[author]++;
+            if (publicationYear == year) {
+                authors.forEach((author) => {
+                    if (author.length > 1) {
+                        // Asegurarse de que el nombre del autor tenga más de un carácter
+                        if (!numArticlesByAuthor.hasOwnProperty(author)) {
+                            numArticlesByAuthor[author] = 1;
+                        } else {
+                            numArticlesByAuthor[author]++;
+                        }
                     }
-                }
-            });
+                });
+            }
         },
         complete: function () {
-            createChartByAuthor(numArticlesByAuthor);
+            createChartByAuthor(numArticlesByAuthor, year);
+        },
+        error: function (err, file, inputElem, reason) {
+            console.error("Error en el parseo del CSV:", err, reason);
         },
     });
 }
@@ -140,11 +117,16 @@ function processDataByCitations(csvData) {
         header: true,
         step: function (row) {
             const year = row.data.Year;
-            const citedByIndex = Object.keys(row.data).find((key) => key.toLowerCase() === "cited by");
+            const citedByIndex = Object.keys(row.data).find(
+                (key) => key.toLowerCase() === "cited by"
+            );
             const citations = row.data[citedByIndex];
 
             if (citations) {
-                yearCitationData.push({ year: parseInt(year), citations: parseInt(citations) });
+                yearCitationData.push({
+                    year: parseInt(year),
+                    citations: parseInt(citations),
+                });
             }
         },
         complete: function () {
@@ -167,8 +149,12 @@ function processDataByTopCited(csvData) {
         },
         complete: function () {
             topCited.sort((a, b) => b.citations - a.citations);
-            const topCitedTitles = topCited.slice(0, 10).map((entry) => entry.title);
-            const topCitedCitations = topCited.slice(0, 10).map((entry) => entry.citations);
+            const topCitedTitles = topCited
+                .slice(0, 10)
+                .map((entry) => entry.title);
+            const topCitedCitations = topCited
+                .slice(0, 10)
+                .map((entry) => entry.citations);
             createTopCitedChart(topCitedTitles, topCitedCitations);
         },
     });
@@ -192,7 +178,6 @@ function processDataByYearAndCitations(csvData) {
     });
 }
 
-
 // Modifica la función processDataByInstitution
 function getTopNInstitutions(numPublicationsByInstitution, N) {
     return Object.entries(numPublicationsByInstitution)
@@ -210,7 +195,7 @@ function processDataByInstitution(csvData) {
             const affiliations = row.data.Affiliations; // Asegúrate de que "Affiliations" coincida con el nombre de la columna en tu CSV
 
             if (affiliations) {
-                const affiliationList = affiliations.split(';');
+                const affiliationList = affiliations.split(";");
                 const uniqueInstitutions = new Set();
 
                 affiliationList.forEach((affiliation) => {
@@ -219,7 +204,11 @@ function processDataByInstitution(csvData) {
                 });
 
                 uniqueInstitutions.forEach((institution) => {
-                    if (!numPublicationsByInstitution.hasOwnProperty(institution)) {
+                    if (
+                        !numPublicationsByInstitution.hasOwnProperty(
+                            institution
+                        )
+                    ) {
                         numPublicationsByInstitution[institution] = 1;
                     } else {
                         numPublicationsByInstitution[institution]++;
@@ -229,14 +218,19 @@ function processDataByInstitution(csvData) {
         },
         complete: function () {
             // Llama a la función getTopNInstitutions para obtener el top 5 de instituciones
-            const topInstitutions = getTopNInstitutions(numPublicationsByInstitution, 5);
+            const topInstitutions = getTopNInstitutions(
+                numPublicationsByInstitution,
+                5
+            );
 
             // Llama a createChartByInstitution con los datos procesados
-            createChartByInstitution(topInstitutions, numPublicationsByInstitution);
+            createChartByInstitution(
+                topInstitutions,
+                numPublicationsByInstitution
+            );
         },
     });
 }
-
 
 //FIN LECTURA Y PROCESAMIENTO DE ARCHIVOS CSV
 export {
@@ -247,5 +241,5 @@ export {
     processDataByTopCited,
     processDataByYearAndCitations,
     processDataByInstitution,
-    processDataByYearAndSource
+    processDataByYearAndSource,
 };
