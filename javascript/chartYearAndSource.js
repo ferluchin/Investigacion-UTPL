@@ -10,8 +10,13 @@ function processDataByYearAndSource(csvData) {
     Papa.parse(csvData, {
         header: true,
         step: function (row) {
-            const year = row.data.Year;
+            const year = parseInt(row.data.Year, 10);
             const source = row.data.Fuente;
+
+            // Verifica si el año está dentro del rango deseado (2010-2023)
+            if (year < 2010 || year > 2023) {
+                return;
+            }
 
             if (!years.has(year)) {
                 years.add(year);

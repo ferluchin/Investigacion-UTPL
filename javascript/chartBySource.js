@@ -10,11 +10,13 @@ function processDataBySource(csvData) {
         step: function (row) {
             const source = row.data.Fuente;
 
-            if (!sources.has(source)) {
-                sources.add(source);
-                numArticlesBySource[source] = 1;
-            } else {
-                numArticlesBySource[source]++;
+            if (source && source.trim() !== "") { // Verificar si la fuente no está vacía
+                if (!sources.has(source)) {
+                    sources.add(source);
+                    numArticlesBySource[source] = 1;
+                } else {
+                    numArticlesBySource[source]++;
+                }
             }
         },
         complete: function () {

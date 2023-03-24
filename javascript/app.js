@@ -9,7 +9,7 @@ import { processDataByInstitution } from "./chartByInstitution.js";
 
 // Leer el archivo CSV
 function fetchAndProcessData() {
-    return fetch("Combinado-WoS-Scopus.csv")
+    return fetch("./data/new-wos-scopus.csv")
         .then((response) => response.text())
         .then((csvData) => {
             processDataByYearAndSource(csvData);

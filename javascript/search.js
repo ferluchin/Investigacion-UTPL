@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 function search(keyword) {
     console.log('Buscando:', keyword);
-    Papa.parse('Combinado-WoS-Scopus.csv', {
+    Papa.parse('./data/new-wos-scopus.csv', {
         download: true,
         header: true,
         complete: function (results) {
