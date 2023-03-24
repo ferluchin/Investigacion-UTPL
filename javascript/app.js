@@ -6,6 +6,7 @@ import { processDataByCitations } from "./chartByCitations.js";
 import { processDataByTopCited } from "./chartTopCited.js";
 import { processDataByYearAndCitations } from "./chartYearAndCitations.js";
 import { processDataByInstitution } from "./chartByInstitution.js";
+import { processDataLanguages } from "./chartLanguagePie.js";
 
 // Leer el archivo CSV
 function fetchAndProcessData() {
@@ -19,6 +20,7 @@ function fetchAndProcessData() {
             processDataByTopCited(csvData);
             processDataByYearAndCitations(csvData);
             processDataByInstitution(csvData);
+            processDataLanguages(csvData);
             // Devuelve una función que acepta un parámetro 'year'
             return function (year) {
                 processDataByAuthor(csvData, year);

@@ -13,6 +13,11 @@ function processDataByYearAndSource(csvData) {
             const year = parseInt(row.data.Year, 10);
             const source = row.data.Fuente;
 
+            // Verifica si el año es un número válido
+            if (isNaN(year)) {
+                return;
+            }
+
             // Verifica si el año está dentro del rango deseado (2010-2023)
             if (year < 2010 || year > 2023) {
                 return;
