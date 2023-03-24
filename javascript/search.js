@@ -39,8 +39,10 @@ function search(keyword) {
                 const title = row['Title'];
                 const keywords = row['Author Keywords'];
                 const citations = row['Cited by'];
+                const source = row['Fuente']; // Añade esta línea
+
                 if (!titlesMap.has(title)) {
-                    titlesMap.set(title, { authors: [], keywords, citations });
+                    titlesMap.set(title, { authors: [], keywords, citations, source }); // Añade source
                 }
                 titlesMap.get(title).authors.push(authors);
             });
@@ -56,12 +58,14 @@ function search(keyword) {
                 const authors = [...new Set(data.authors.map(a => a.split(', ')).flat())].join(', ');
                 const keywords = data.keywords;
                 const citations = data.citations;
+                const source = data.source; // Añade esta línea
 
                 return {
                     title,
                     authors,
                     keywords,
-                    citations
+                    citations,
+                    source // Añade esta línea
                 };
             }).sort((a, b) => b.citations - a.citations);
             console.log('Resultados ordenados:', sortedResults);
@@ -85,6 +89,18 @@ function search(keyword) {
                 const citationsTd = document.createElement('td');
                 citationsTd.innerHTML = data.citations;
                 tr.appendChild(citationsTd);
+
+                // Agrega la columna de Fuente
+                const sourceTd = document.createElement('td');
+                let sourceHTML = "";
+                if (data.source.includes("Web of Science")) {
+                    sourceHTML += '<img src="images/wos-logo.png" alt="Web of Science" class="tech-logo">';
+                }
+                if (data.source.includes("Scopus")) {
+                    sourceHTML += '<img src="images/scopus-logo.png" alt="Scopus" class="tech-logo">';
+                }
+                sourceTd.innerHTML = sourceHTML;
+                tr.appendChild(sourceTd);
 
                 tbody.appendChild(tr);
             });

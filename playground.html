@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Búsqueda de Autores y Artículos</title>
+    <title>Playground</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/styles.css">
@@ -16,51 +16,18 @@
     <div id="navbar-container"></div>
 
     <div class="container">
-        <h1 class="text-center my-4">
-            Búsqueda de Autores y Artículos
-        </h1>
-
-        <!-- Sección de búsqueda -->
-        <h2 class="text-center my-4">Buscar autores y artículos por palabra clave o título</h2>
-        <form id="searchForm" class="d-flex justify-content-center">
-            <div class="form-group form-group-search">
-                <label for="searchInput">Palabra clave o título:</label>
-                <input type="text" id="searchInput" class="form-control search-input">
-            </div>
-            <button type="submit" class="btn btn-primary ml-3">Buscar</button>
-        </form>
-
-        <!-- Tabla de resultados -->
-        <h2 class="text-center my-4">Resultados de la búsqueda</h2>
-        <table id="searchResultsTable" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Autores</th>
-                    <th>Palabras clave</th>
-                    <th>Citas</th>
-                    <th>Fuente</th>
-
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-
+        <!-- Aquí va el contenido principal de la página -->
     </div>
-    
+
     <script src="./style/navbar.js"></script>
     <script>
         async function loadNavbar() {
             const response = await fetch('navbar.html');
             const navbarContent = await response.text();
             document.getElementById('navbar-container').innerHTML = navbarContent;
-            initNavbar(); // Llama a la función initNavbar() después de cargar el contenido de navbar
         }
         loadNavbar();
     </script>
-
-    <script type="module" src="./javascript/search.js"></script>
 
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
@@ -70,11 +37,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
         integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
         integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 
 </body>
 

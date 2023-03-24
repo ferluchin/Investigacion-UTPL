@@ -44,3 +44,7 @@ p {
     background-color: #007bff;
     color: white !important;
 }
+
+.form-group-search {
+    margin-right: 20px;
+}

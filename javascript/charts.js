@@ -18,6 +18,9 @@ const borderColors = {
     institutions: "rgba(54, 162, 235, 1)",
 };
 
+//variable global
+let chartByYearAndSourceInstance = null;
+
 function getDefaultChartOptions() {
     return {
         scales: {
@@ -52,7 +55,7 @@ function generateChartData(
 }
 
 // Función para crear el gráfico utilizando Chart.js
-
+/*
 function createChartByYearAndSource(years, numArticlesByYearAndSource) {
     const ctx = document.getElementById("chart1").getContext("2d");
 
@@ -93,6 +96,59 @@ function createChartByYearAndSource(years, numArticlesByYearAndSource) {
     const chartOptions = getDefaultChartOptions();
 
     new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: chartOptions,
+    });
+}
+*/
+
+function createChartByYearAndSource(years, numArticlesByYearAndSource) {
+    const ctx = document.getElementById("chart1").getContext("2d");
+
+    // Destruye la instancia del gráfico anterior si existe.
+    if (chartByYearAndSourceInstance) {
+        chartByYearAndSourceInstance.destroy();
+    }
+
+    // Extraer datos para cada fuente
+    const scopusData = years.map(
+        (year) => numArticlesByYearAndSource[year]?.["Scopus"] || 0
+    );
+    const wosData = years.map(
+        (year) => numArticlesByYearAndSource[year]?.["Web of Science"] || 0
+    );
+    const bothData = years.map(
+        (year) =>
+            numArticlesByYearAndSource[year]?.["Scopus, Web of Science"] || 0
+    );
+
+    const labels = years;
+    const datasetLabels = ["Scopus", "Web of Science", "Ambas"];
+    const data = [scopusData, wosData, bothData];
+    const chartBackgroundColors = [
+        backgroundColors.scopus,
+        backgroundColors.wos,
+        backgroundColors.both,
+    ];
+    const chartBorderColors = [
+        borderColors.scopus,
+        borderColors.wos,
+        borderColors.both,
+    ];
+
+    const chartData = generateChartData(
+        labels,
+        datasetLabels,
+        data,
+        chartBackgroundColors,
+        chartBorderColors
+    );
+
+    const chartOptions = getDefaultChartOptions();
+
+    // Almacena la instancia del gráfico en la variable global.
+    chartByYearAndSourceInstance = new Chart(ctx, {
         type: "bar",
         data: chartData,
         options: chartOptions,
