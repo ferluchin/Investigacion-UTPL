@@ -1,10 +1,9 @@
-var date = "Thu Feb 16 2023 16:54:29 GMT-0500 (hora de Ecuador)";
-var data = [
+[
   {
     "name": "Carlos Ivan Espinosa",
     "url": "https://scholar.google.com/citations?hl=en&user=LU8X844AAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=LU8X844AAAAJ&citpid=4",
-    "affiliation": "Universidad T�cnica Particular de Loja, Loja, Ecuador",
+    "affiliation": "Universidad Técnica Particular de Loja, Loja, Ecuador",
     "keywords": [
       "Ecology",
       "Biodiversity",
@@ -29,9 +28,9 @@ var data = [
     "year": "2012",
     "collaborators": [
       "Marcelino de la Cruz Rot",
-      "Adri�n Escudero (ORCID 0000-0002-...",
+      "Adrián Escudero (ORCID 0000-0002-...",
       "Arantzazu L. Luzuriaga.",
-      "Mar�a Fernanda Tapia-Armijos",
+      "María Fernanda Tapia-Armijos",
       "Marcos M�ndez"
     ]
   },
@@ -39,7 +38,7 @@ var data = [
     "name": "Omar Cabrera",
     "url": "https://scholar.google.com/citations?hl=en&user=BtPpci8AAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=BtPpci8AAAAJ&citpid=1",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Forest Management",
       "Forest Ecology",
@@ -66,7 +65,7 @@ var data = [
     "name": "Juan Pablo Suárez",
     "url": "https://scholar.google.com/citations?hl=en&user=64iVeswAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=64iVeswAAAAJ&citpid=4",
-    "affiliation": "Departamento de Ciencias Biol�gicas, Universidad Tecnica Particular de Loja, UTPL, Ecuador",
+    "affiliation": "Departamento de Ciencias Biológicas, Universidad Tecnica Particular de Loja, UTPL, Ecuador",
     "keywords": [
       "Mycorrhiza",
       "orchid mycorrhiza",
@@ -91,7 +90,7 @@ var data = [
     "year": "2007",
     "collaborators": [
       "Paulo Herrera",
-      "Dar�o Cruz S",
+      "Darío Cruz S",
       "St�phane Declerck",
       "Paul Lojan Armijos",
       "J�rgen Homeier",
@@ -107,7 +106,7 @@ var data = [
     "name": "Silvia González Pérez",
     "url": "https://scholar.google.com/citations?hl=en&user=aHYUdp4AAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=aHYUdp4AAAAJ&citpid=1",
-    "affiliation": "Universidad T�cnica Particular de Loja, Ecuador",
+    "affiliation": "Universidad Técnica Particular de Loja, Ecuador",
     "keywords": [
       "Qu�mica computacional",
       "cat�lisis"
@@ -133,7 +132,7 @@ var data = [
     "name": "Nelson Piedra",
     "url": "https://scholar.google.com/citations?hl=en&user=9iSWka8AAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=9iSWka8AAAAJ&citpid=3",
-    "affiliation": "Professor of Computer Science, Universidad T�cnica Particular de Loja, UTPL, Ecuador",
+    "affiliation": "Professor of Computer Science, Universidad Técnica Particular de Loja, UTPL, Ecuador",
     "keywords": [
       "Interoperability",
       "Semantic Web",
@@ -158,7 +157,7 @@ var data = [
     "year": "2010",
     "collaborators": [
       "Edmundo Tovar Caro",
-      "Jorge L�pez-Vargas",
+      "Jorge López-Vargas",
       "Victor Saquicela",
       "Audrey Romero-Pel�ez",
       "Manuel Castro Gil",
@@ -175,7 +174,7 @@ var data = [
     "name": "Chabaco Armijos",
     "url": "https://scholar.google.com/citations?hl=en&user=2bMcMnoAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=2bMcMnoAAAAJ&citpid=1",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Natural products",
       "ethnobotany",
@@ -201,13 +200,13 @@ var data = [
       "Omar Malagon",
       "Jorge Ram�rez",
       "James Willan Calva",
-      "Jos� Miguel Andrade",
+      "José Miguel Andrade",
       "Diana Guaya",
       "Hnin Thanda Aung",
       "Gianluca Gilardoni",
       "Eduardo Valarezo",
       "Zaw Min Thu",
-      "Silvia Gonz�lez P�rez",
+      "Silvia González P�rez",
       "Bracco Francesco",
       "Hern�n Patricio Lucero Mosquera",
       "Manuel Jesus Gazquez Gonzalez",
@@ -223,7 +222,7 @@ var data = [
     "name": "Omar Malagon",
     "url": "https://scholar.google.com/citations?hl=en&user=HZMXjEUAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=HZMXjEUAAAAJ&citpid=1",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Qu�mica de productos naturales",
       "teolog�a"
@@ -249,7 +248,7 @@ var data = [
     "name": "Janneth Chicaiza",
     "url": "https://scholar.google.com/citations?hl=en&user=Z2RQGEYAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=Z2RQGEYAAAAJ&citpid=1",
-    "affiliation": "Universidad T�cnica Particular de Loja (Ecuador)",
+    "affiliation": "Universidad Técnica Particular de Loja (Ecuador)",
     "keywords": [
       "Semantic Web",
       "Information Retrieval",
@@ -274,7 +273,7 @@ var data = [
     "year": "2010",
     "collaborators": [
       "Nelson Piedra",
-      "Jorge L�pez-Vargas",
+      "Jorge López-Vargas",
       "Edmundo Tovar Caro",
       "Mariela Tapia-Leon",
       "Elizabeth Cadme",
@@ -290,7 +289,7 @@ var data = [
     "name": "Luis Guaman",
     "url": "https://scholar.google.com/citations?hl=en&user=au0zl2oAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=au0zl2oAAAAJ&citpid=1",
-    "affiliation": "Universidad T�cnica Particular de LOja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Biolog�a",
       "Gen�tica"
@@ -316,7 +315,7 @@ var data = [
     "name": "Gianluca Gilardoni",
     "url": "https://scholar.google.com/citations?hl=en&user=jc9zojIAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=jc9zojIAAAAJ&citpid=19",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Organic Chemistry",
       "Natural Products",
@@ -351,10 +350,10 @@ var data = [
       "Maria Picco Anna",
       "Gloria Brusotti",
       "Barbara Sgorbini",
-      "Ana Mar�a Quilez Guerrero",
+      "Ana María Quilez Guerrero",
       "Caden Souccar",
       "Zaw Min Thu",
-      "Jos� Miguel Andrade",
+      "José Miguel Andrade",
       "Omar German Malagon Aviles",
       "Dlzar A. Kheder",
       "HAWRAZ IBRAHIM M.AMIN",
@@ -366,12 +365,12 @@ var data = [
     "name": "Diana Rivera-Rogel",
     "url": "https://scholar.google.com/citations?hl=en&user=lCG0DloAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=lCG0DloAAAAJ&citpid=2",
-    "affiliation": "Directora del �rea Sociohuman�stica de la Universidad T�cnica Particular de Loja",
+    "affiliation": "Directora del �rea Sociohuman�stica de la Universidad Técnica Particular de Loja",
     "keywords": [
       "tecnolog�as",
-      "comunicaci�n",
+      "Comunicación",
       "periodismo digital",
-      "educomunicaci�n",
+      "eduComunicación",
       "alfabetizaci�n digital"
     ],
     "stats": {
@@ -391,7 +390,7 @@ var data = [
     "year": "2010",
     "collaborators": [
       "Claudia Rodr�guez-Hidalgo (0000-000...",
-      "Isidro Mar�n-Guti�rrez",
+      "Isidro Mar�n-Gutiérrez",
       "Andrea Victoria Vel�squez Benavides",
       "Gianella Carri�n-Salinas (0000-0001-...",
       "Ketty Daniela Calva-Cabrera",
@@ -399,13 +398,13 @@ var data = [
       "Ignacio AGUADED (0000-0002-0229-...",
       "Damian Mendoza-Zambrano",
       "Jenny Yaguache",
-      "Catalina Gonz�lez-Cabrera (ORCID: h...",
+      "Catalina González-Cabrera (ORCID: h...",
       "Cecilia UGALDE (ORCID: 0000-0001-...",
       "M.I Pun�n",
-      "Rosa GARC�A-RUIZ",
+      "Rosa García-RUIZ",
       "Stephany Celly-Alvarado",
-      "Ram�n Salaverr�a (ORCID:0000-0002...",
-      "Xos� Pereira-Fari�a",
+      "Ramón Salaverr�a (ORCID:0000-0002...",
+      "Xosé Pereira-Fari�a",
       "Abel Suing",
       "francisco campos",
       "�gueda Delgado Ponce",
@@ -416,7 +415,7 @@ var data = [
     "name": "Jorge López-Vargas",
     "url": "https://scholar.google.com/citations?hl=en&user=xdcnuAcAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=xdcnuAcAAAAJ&citpid=3",
-    "affiliation": "Universidad T�cnica Particular de Loja, Departamento de Ciencias de la Computaci�n y Electr�nica",
+    "affiliation": "Universidad Técnica Particular de Loja, Departamento de Ciencias de la computación y Electrónica",
     "keywords": [
       "linked data",
       "semantic web",
@@ -453,13 +452,13 @@ var data = [
     "name": "Ángel Benítez",
     "url": "https://scholar.google.com/citations?hl=en&user=C3C5q7kAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=C3C5q7kAAAAJ&citpid=3",
-    "affiliation": "Docente investigador, Universidad T�cnica Particular de Loja",
+    "affiliation": "Docente investigador, Universidad Técnica Particular de Loja",
     "keywords": [
-      "Taxonom�a",
-      "ecolog�a",
+      "Taxonomía",
+      "ecología",
       "bioindicadores",
       "comunidades no vasculares",
-      "conservaci�n."
+      "conservación."
     ],
     "stats": {
       "citations": [
@@ -479,21 +478,21 @@ var data = [
     "collaborators": [
       "Gregorio Arag�n",
       "Maria Prieto Alvaro",
-      "Dar�o Cruz S",
+      "Darío Cruz S",
       "David A. Donoso",
-      "Yadira Gonz�lez",
+      "Yadira González",
       "Nixon Cumbicus Torres",
       "Juan Pablo Su�rez",
       "Isabel Mart�nez",
       "Omar Cabrera",
       "Eduardo Valarezo",
       "Paulo Herrera",
-      "Pablo Ram�n",
-      "Carlos I�iguez-Armijos",
+      "Pablo Ramón",
+      "Carlos Iñiguez-Armijos",
       "Fabi�n Reyes-Bueno",
       "Augusta Cueva-Agila",
-      "Adri�n Escudero (ORCID 0000-0002-...",
-      "Yenny Gonz�lez Ramos (ORCID: 000..."
+      "Adrián Escudero (ORCID 0000-0002-...",
+      "Yenny González Ramos (ORCID: 000..."
     ]
   },
   {
@@ -504,7 +503,7 @@ var data = [
     "keywords": [
       "Forestal",
       "GIS",
-      "Econom�a Forestal"
+      "Economía Forestal"
     ],
     "stats": {
       "citations": [
@@ -527,7 +526,7 @@ var data = [
     "name": "Diana Guaya",
     "url": "https://scholar.google.com/citations?hl=en&user=RU_bmmYAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=RU_bmmYAAAAJ&citpid=1",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Adsorci�n y Cat�lisis"
     ],
@@ -552,7 +551,7 @@ var data = [
     "name": "Wilson Guillermo Siguenza Campoverde",
     "url": "https://scholar.google.com/citations?hl=en&user=v-zFiEsAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=v-zFiEsAAAAJ&citpid=1",
-    "affiliation": "Profesor, Universidad T�cnica Particular de Loja",
+    "affiliation": "Profesor, Universidad Técnica Particular de Loja",
     "keywords": [
       "Psicolog�a",
       "Educaci�n"
@@ -584,7 +583,7 @@ var data = [
     "name": "Liliana Enciso Quispe",
     "url": "https://scholar.google.com/citations?hl=en&user=qA2q2ysAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=qA2q2ysAAAAJ&citpid=4",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Redes Ad Hoc",
       "Protocols",
@@ -618,9 +617,9 @@ var data = [
     "name": "MI Punín",
     "url": "https://scholar.google.com/citations?hl=en&user=5rmIagQAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=5rmIagQAAAAJ&citpid=2",
-    "affiliation": "Universidad T�cnica Particular de Loja. UTPL",
+    "affiliation": "Universidad Técnica Particular de Loja. UTPL",
     "keywords": [
-      "Comunicaci�n",
+      "Comunicación",
       "Periodismo",
       "Educaci�n"
     ],
@@ -642,20 +641,20 @@ var data = [
     "collaborators": [
       "Diana Rivera-Rogel",
       "Ketty Daniela Calva-Cabrera",
-      "Isidro Mar�n-Guti�rrez",
-      "Jos� R�as Ara�jo",
-      "M�nica Hinojosa Becerra",
+      "Isidro Mar�n-Gutiérrez",
+      "José R�as Ara�jo",
+      "Mónica Hinojosa Becerra",
       "Abel Suing",
       "Kruzkaya Ord�nez",
       "Patricio Barrazueta Molina",
-      "Benazir Guti�rrez",
+      "Benazir Gutiérrez",
       "Sylvie Ratt�",
       "Sabela Direito-Rebollal",
-      "Gabriela S�nchez Carri�n",
-      "Carlos Garc�a Torres",
+      "Gabriela Sánchez Carri�n",
+      "Carlos García Torres",
       "Cati Mier",
-      "Xos� L�pez-Garc�a",
-      "Jos� Miguel T��ez L�pez",
+      "Xosé López-García",
+      "José Miguel T��ez López",
       "Pablo Escand�n Montenegro"
     ]
   },
@@ -663,7 +662,7 @@ var data = [
     "name": "Paul Székely",
     "url": "https://scholar.google.com/citations?hl=en&user=qWHrkb0AAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=qWHrkb0AAAAJ&citpid=4",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
       "Systematics",
       "biogeography",
@@ -693,11 +692,11 @@ var data = [
     "name": "Verónica Altamirano Benítez",
     "url": "https://scholar.google.com/citations?hl=en&user=YLgkGTQAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=YLgkGTQAAAAJ&citpid=4",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
-      "Comunicaci�n Organizacional",
-      "Comunicaci�n 2.0",
-      "Comunicaci�n tur�stica"
+      "Comunicación Organizacional",
+      "Comunicación 2.0",
+      "Comunicación turística"
     ],
     "stats": {
       "citations": [
@@ -715,15 +714,15 @@ var data = [
     },
     "year": "2015",
     "collaborators": [
-      "Jos� Miguel T��ez L�pez",
-      "Isidro Mar�n-Guti�rrez",
+      "José Miguel T��ez López",
+      "Isidro Mar�n-Gutiérrez",
       "Rosario Puertas-Hidalgo",
       "Almudena Barrientos-B�ez",
-      "Alba-Mar�a Mart�nez-Sala",
+      "Alba-María Mart�nez-Sala",
       "Jenny Yaguache",
       "Kruzkaya Ord�nez",
       "DAVID CALDEVILLA DOM�NGUEZ",
-      "Eva S�nchez Amboage",
+      "Eva Sánchez Amboage",
       "Santiago P�rez Samaniego",
       "Cecibel Chamba-Maza",
       "Valent�n Alejandro Mart�nez Fern�ndez",
@@ -731,19 +730,19 @@ var data = [
       "Diana Rivera-Rogel",
       "Karina Valarezo",
       "Francisco Segado-Boj (ORCID:0000-0...",
-      "Jes�s Segarra-Saavedra (ORCID: 000...",
-      "Francisco Javier Herrero Guti�rrez"
+      "Jesús Segarra-Saavedra (ORCID: 000...",
+      "Francisco Javier Herrero Gutiérrez"
     ]
   },
   {
     "name": "Ana D. Verdú Delgado",
     "url": "https://scholar.google.com/citations?hl=en&user=7erH_QYAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=7erH_QYAAAAJ&citpid=3",
-    "affiliation": "Universidad T�cnica Particular de Loja",
+    "affiliation": "Universidad Técnica Particular de Loja",
     "keywords": [
-      "Estudios de g�nero",
+      "Estudios de género",
       "feminismo",
-      "comunicaci�n"
+      "Comunicación"
     ],
     "stats": {
       "citations": [
@@ -762,13 +761,13 @@ var data = [
     "year": "2011",
     "collaborators": [
       "Anastasia T�llez Infantes",
-      "Luis S�nchez V�zquez",
-      "Carmen Ma�as Viejo",
+      "Luis Sánchez Vázquez",
+      "Carmen Mañas Viejo",
       "Paz Guarderas Albuja (orcid.org/0000-...",
       "Israel Celi Toledo",
       "Erica Briones Vozmediano",
-      "Norman GONZ�LEZ-TAMAYO",
-      "Daysi Garc�a-Tinisaray",
+      "Norman González-TAMAYO",
+      "Daysi García-Tinisaray",
       "Luz Maria Castro"
     ]
   },
@@ -776,7 +775,7 @@ var data = [
     "name": "Torres-Carrion Pablo Vicente",
     "url": "https://scholar.google.com/citations?hl=en&user=39pKc48AAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=39pKc48AAAAJ&citpid=4",
-    "affiliation": "Profesor Titular Universidad T�cnica Particular de Loja",
+    "affiliation": "Profesor Titular Universidad Técnica Particular de Loja",
     "keywords": [
       "Human-Computer Interaction",
       "Ambient Intelligence",
@@ -806,18 +805,18 @@ var data = [
       "Juan Carlos Torres-Diaz",
       "Luis Barba-Guaman (ORCID:0000-00...",
       "Silvia Libertad Vaca Gallegos",
-      "Vanesa Mu�oz",
+      "Vanesa Muñoz",
       "CESAR BERNAL",
       "Miguel Botto-Tobar",
-      "VIVIAN F�LIX L�PEZ BATISTA",
+      "VIVIAN FÉLIX López BATISTA",
       "Ruth Reategui",
       "Victor Lopez Guerra",
       "Rosa Gil Iranzo",
       "Byron Fernando Bustamante Granda",
-      "Juan Manuel Garc�a-Samaniego",
-      "Jos� Barbosa Corbacho",
+      "Juan Manuel García-Samaniego",
+      "José Barbosa Corbacho",
       "Cesar Collazos - https://orcid.org/0000...",
-      "Jaime Mu�oz-Arteaga",
+      "Jaime Muñoz-Arteaga",
       "Juan Manuel Gonzalez Calleros",
       "Jennifer Perez Benedi"
     ]
@@ -828,8 +827,8 @@ var data = [
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=b4geC1QAAAAJ&citpid=1",
     "affiliation": "Docente UTPL",
     "keywords": [
-      "inform�tica",
-      "ciencias de la computaci�n",
+      "informática",
+      "ciencias de la computación",
       "tecnolog�a",
       "emprendimiento",
       "innovaci�n."
@@ -855,7 +854,7 @@ var data = [
     "name": "Rodriguez M. Germania",
     "url": "https://scholar.google.com/citations?hl=en&user=e9m7o0AAAAAJ",
     "photo": "http://scholar.google.comhttps://scholar.googleusercontent.com/citations?view_op=view_photo&user=e9m7o0AAAAAJ&citpid=2",
-    "affiliation": "Universidad T�cnica Particular de Loja, Universidad Polit�cnica de Madrid",
+    "affiliation": "Universidad Técnica Particular de Loja, Universidad Polit�cnica de Madrid",
     "keywords": [
       "software architecture",
       "HCI",
@@ -918,4 +917,4 @@ var data = [
       "Patricia Ostrosky-Wegman"
     ]
   }
-];
+]

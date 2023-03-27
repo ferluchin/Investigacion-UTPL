@@ -52,24 +52,12 @@
         <h2>
             Distribución de los idiomas de las publicaciones
         </h2>
-        <div class="chart-container" style="width: 100%; height: 400px; display: flex; justify-content: center; align-items: center;">
+        <div class="chart-container"
+            style="width: 100%; height: 400px; display: flex; justify-content: center; align-items: center;">
             <canvas id="languagePieChart"></canvas>
         </div>
 
-        <!-- <h2>
-            Relación entre el año de publicación y las citas
-        </h2>
-        <div class="chart-container">
-            <canvas id="citationsByYearChart"></canvas>
-        </div> 
 
-
-        <p class="scatter-description">
-            Este gráfico muestra la relación entre el año de publicación y las citas recibidas. Permite analizar si
-            existe
-            una correlación entre el año de publicación y la cantidad de citas que un artículo recibe.
-        </p>
-    -->
         <h2>Top 10 de los autores más productivos</h2>
 
 
@@ -138,11 +126,49 @@
             <canvas id="publicationsByInstitutionChart"></canvas>
         </div>
 
+
+        <h2>
+            Relación entre el año de publicación y las citas
+        </h2>
+        <div class="chart-container">
+            <canvas id="citationsByYearChart"></canvas>
+        </div>
+
+
+        <p class="scatter-description">
+            Este gráfico muestra la relación entre el año de publicación y las citas recibidas. Permite analizar si
+            existe
+            una correlación entre el año de publicación y la cantidad de citas que un artículo recibe.
+        </p>
+
+
         <h2>Nube de Palabras Clave</h2>
         <svg id="word-cloud" width="960" height="600"></svg>
         <div id="word-cloud"></div>
 
         <script src="./style/navbar.js"></script>
+        <script type="module">
+            import { fetchAndProcessData, processDataByAuthor } from './javascript/app.js';
+
+            fetchAndProcessData();
+
+            const yearSelector = document.getElementById("yearSelector");
+            yearSelector.addEventListener("change", function () {
+                const selectedYear = yearSelector.value;
+                processDataByAuthor(selectedYear);
+            });
+
+            async function loadNavbar() {
+                const response = await fetch('navbar.html');
+                const navbarContent = await response.text();
+                document.getElementById('navbar-container').innerHTML = navbarContent;
+                initNavbar();
+            }
+
+            loadNavbar();
+        </script>
+
+        <!--         
         <script type="module">
             import { fetchAndProcessData } from './javascript/app.js';
 
@@ -152,7 +178,7 @@
                     const selectedYear = yearSelector.value;
                     //processDataByAuthor(csvData, selectedYear);
                     fetchAndProcessData().then((processDataByAuthorWithYear) => {
-                        processDataByAuthorWithYear(selectedYear);
+                        processDataByAuthor(selectedYear);
                     });
                 });
             });
@@ -166,6 +192,7 @@
 
             loadNavbar();
         </script>
+         -->
         <script type="module" src="./javascript/app.js"></script>
         <!-- <script type="module" src="search.js"></script> -->
         <script type="module" src="./javascript/keywords.js"></script>

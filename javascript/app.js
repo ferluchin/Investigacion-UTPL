@@ -31,4 +31,4 @@ function fetchAndProcessData() {
         );
 }
 
-export { fetchAndProcessData };
+export { fetchAndProcessData, processDataByAuthor };
