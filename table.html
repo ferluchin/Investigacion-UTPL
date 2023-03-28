@@ -62,11 +62,11 @@
                     <th>Nombre</th>
                     <th>En Scholar desde</th>
                     <th>Citas</th>
-                    <th>/y</th>
+                    <!-- <th>/y</th> -->
                     <th>h-index</th>
-                    <th>/y</th>
+                    <!-- <th>/y</th> -->
                     <th>i10-index</th>
-                    <th>/y</th>
+                    <!-- <th>/y</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -128,11 +128,11 @@
                 //     '</span></a>'));
                 row.append($('<td/>').html(data[i].year));
                 row.append($('<td/>').html(data[i].stats.citations[0]));
-                row.append($('<td/>').html(Math.round(data[i].stats.citations[0] / y)));
+                // row.append($('<td/>').html(Math.round(data[i].stats.citations[0] / y)));
                 row.append($('<td/>').html(data[i].stats.hindex[0]));
-                row.append($('<td/>').html(round(data[i].stats.hindex[0] / y)));
+                // row.append($('<td/>').html(round(data[i].stats.hindex[0] / y)));
                 row.append($('<td/>').html(data[i].stats.i10index[0]));
-                row.append($('<td/>').html(round(data[i].stats.i10index[0] / y)));
+                // row.append($('<td/>').html(round(data[i].stats.i10index[0] / y)));
                 //$("#stats").append(row);
                 $("#stats tbody").append(row);
             }
