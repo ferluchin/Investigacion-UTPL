@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <!-- Barra de navegación -->
 
     <div id="navbar-container"></div>
@@ -21,9 +20,6 @@
         <h1 class="text-center my-4">
             Visualización de datos de artículos de investigación
         </h1>
-
-
-
         <!-- Sección de gráficos -->
         <div class="row">
             <div class="col-md-12">
@@ -57,9 +53,7 @@
             <canvas id="languagePieChart"></canvas>
         </div>
 
-
         <h2>Top 10 de los autores más productivos</h2>
-
 
         <h3>Seleccione el año:</h3>
         <select id="yearSelector">
@@ -72,10 +66,7 @@
             <option value="2021">2021</option>
             <option value="2022">2022</option>
             <option value="2023">2023</option>
-
         </select>
-
-
 
         <div class="chart-container">
             <canvas id="topAuthorsChart"></canvas>
@@ -86,7 +77,6 @@
             visualización destaca a los autores que han contribuido significativamente a la investigación en la
             Universidad.
         </p>
-
 
         <h2>Top 10 Cited Chart</h2>
         <div class="chart-container">
@@ -105,20 +95,15 @@
         </div>
         <p class="scatter-description">
             Este gráfico de dispersión muestra la relación entre el año de publicación y la cantidad de citas que
-            han
-            recibido
-            las publicaciones. Al representar los datos de esta manera, se pueden identificar posibles tendencias o
-            patrones,
-            como si las publicaciones más recientes tienden a tener más citas que las antiguas, o si hay una
-            distribución
-            uniforme de citas a lo largo del tiempo. Un gráfico de dispersión es útil para mostrar la distribución
-            de los
-            datos
-            en dos dimensiones y para identificar correlaciones, agrupaciones o posibles outliers. En este caso
-            específico,
-            permite evaluar el impacto de las publicaciones a lo largo del tiempo en función de la cantidad de citas
-            que
-            reciben.
+            han recibido las publicaciones. Al representar los datos de esta manera, se pueden identificar posibles
+            tendencias o
+            patrones, como si las publicaciones más recientes tienden a tener más citas que las antiguas, o si hay una
+            distribución uniforme de citas a lo largo del tiempo. Un gráfico de dispersión es útil para mostrar la
+            distribución de los datos en dos dimensiones y para identificar correlaciones, agrupaciones o posibles outliers. En este
+            caso
+            específico, permite evaluar el impacto de las publicaciones a lo largo del tiempo en función de la cantidad
+            de citas
+            que reciben.
         </p>
 
         <h2>Cantidad de publicaciones por afiliación institucional</h2>
@@ -126,14 +111,12 @@
             <canvas id="publicationsByInstitutionChart"></canvas>
         </div>
 
-
         <h2>
             Relación entre el año de publicación y las citas
         </h2>
         <div class="chart-container">
             <canvas id="citationsByYearChart"></canvas>
         </div>
-
 
         <p class="scatter-description">
             Este gráfico muestra la relación entre el año de publicación y las citas recibidas. Permite analizar si
@@ -149,9 +132,7 @@
         <script src="./style/navbar.js"></script>
         <script type="module">
             import { fetchAndProcessData, processDataByAuthor } from './javascript/app.js';
-
             fetchAndProcessData();
-
             const yearSelector = document.getElementById("yearSelector");
             yearSelector.addEventListener("change", function () {
                 const selectedYear = yearSelector.value;
@@ -168,31 +149,6 @@
             loadNavbar();
         </script>
 
-        <!--         
-        <script type="module">
-            import { fetchAndProcessData } from './javascript/app.js';
-
-            fetchAndProcessData().then(csvData => {
-                const yearSelector = document.getElementById("yearSelector");
-                yearSelector.addEventListener("change", function () {
-                    const selectedYear = yearSelector.value;
-                    //processDataByAuthor(csvData, selectedYear);
-                    fetchAndProcessData().then((processDataByAuthorWithYear) => {
-                        processDataByAuthor(selectedYear);
-                    });
-                });
-            });
-
-            async function loadNavbar() {
-                const response = await fetch('navbar.html');
-                const navbarContent = await response.text();
-                document.getElementById('navbar-container').innerHTML = navbarContent;
-                initNavbar();
-            }
-
-            loadNavbar();
-        </script>
-         -->
         <script type="module" src="./javascript/app.js"></script>
         <!-- <script type="module" src="search.js"></script> -->
         <script type="module" src="./javascript/keywords.js"></script>

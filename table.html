@@ -24,10 +24,7 @@
 <body>
 
     <div id="navbar-container"></div>
-
-
     <!-- Aquí va el contenido principal de la página -->
-
     <h1>UNIVERSIDAD TÉCNICA PARTICULAR DE LOJA 🎓</h1>
     <div class="container">
 
@@ -38,18 +35,10 @@
             </a> (Universidad Técnica Particular de Loja)
         </p>
 
-
         <p class="text-muted small text-center mb-4">
             Datos extraídos de Google Scholar: "nombre", "citas", "índice h" e "índice i10" provienen del perfil del
             autor; "año" indica el año de la primera cita. Las columnas marcadas con "/y" indican la división por años
             desde la primera citación.
-        </p>
-        <!-- <div id="date" style="width:800px"><small>Datos extraídos de Google
-                Scholar: "nombre", "citas", "índice h" e "índice i10" provienen del
-                perfil del autor; "año" indica el año de la primera cita. Las columnas
-                marcadas con "/y" indican la división por años desde la primera
-                citación.</small></div> -->
-
         </p>
     </div>
 
@@ -124,9 +113,6 @@
                 var row = $('<tr/>');
                 var y = (2021 - data[i].year);
                 row.append($('<td>'));
-                // row.append($('<td style="text-align: left"/>').html('<a href="' + data[i].url + '">' + data[i].name + '</a>'));
-                //row.append($('<td style="text-align: left"/>').html('<div class="d-flex align-items-center"><img src="images/' + userId + '.png" class="me-2" style="max-height: 30px; " ><span>' + data[i].name + '</span></div>'));
-                // row.append($('<td style="text-align: left"/>').html(`<div class="d-flex align-items-center"><img src="images/${userId}.png" class="me-2" style="max-height: 30px; width: 30px;"><span>${data[i].name}</span></div>`));
                 //row.append($('<td style="text-align: left"/>').html(`<div class="d-flex align-items-center"><img src="images/${userId}.png" class="me-2" style="max-height: 30px; width: 30px;"><a href="${data[i].url}">${data[i].name}</a></div>`));
                 row.append($('<td style="text-align: left"/>')
                     .html(`<div class="d-flex align-items-center">
@@ -140,13 +126,7 @@
                 //     data[i].affiliation + '<br/>' +
                 //     '<small><i>' + data[i].keywords.join(', ') + '</i></small><br/>' +
                 //     '</span></a>'));
-
-                // console.log("Nombre: " + data[i].name);
-                // console.log("URL: " + data[i].url);
-                // console.log("Afiliación: " + data[i].affiliation);
-                // console.log("Palabras clave: " + data[i].keywords.join(', '));
                 row.append($('<td/>').html(data[i].year));
-
                 row.append($('<td/>').html(data[i].stats.citations[0]));
                 row.append($('<td/>').html(Math.round(data[i].stats.citations[0] / y)));
                 row.append($('<td/>').html(data[i].stats.hindex[0]));
@@ -157,7 +137,6 @@
                 $("#stats tbody").append(row);
             }
         }
-
         // http://tablesorter.com/docs/
         $(document).ready(async function () {
             
@@ -172,8 +151,6 @@
                 populateTable(data, maxResearchers);
             });
 
-            // http://tablesorter.com/docs/
-            //$("#date").append("<p><small>Last updated: " + date + "</small></p>");
             $("#stats").tablesorter({ sortList: [[5, 1], [3, 1]] });
 
             // https://stackoverflow.com/questions/6549518/jquery-tablesorter-with-row-numbers
@@ -216,9 +193,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
     integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <script src="./style/navbar.js"></script>
-
 </body>
-
 </html>
