@@ -61,7 +61,7 @@
                 <tr class="header">
                     <th> </th>
                     <th>Nombre</th>
-                    <th>Año</th>
+                    <th>En Scholar desde</th>
                     <th>Citas</th>
                     <th>/y</th>
                     <th>h-index</th>
@@ -111,7 +111,8 @@
                 var y = (2021 - data[i].year);
                 row.append($('<td>'));
                 // row.append($('<td style="text-align: left"/>').html('<a href="' + data[i].url + '">' + data[i].name + '</a>'));
-                    row.append($('<td style="text-align: left"/>').html('<div class="d-flex align-items-center"><img src="images/' + userId + '.png" class="me-2" style="max-height: 30px;"><span>' + data[i].name + '</span></div>'));
+                //row.append($('<td style="text-align: left"/>').html('<div class="d-flex align-items-center"><img src="images/' + userId + '.png" class="me-2" style="max-height: 30px; " ><span>' + data[i].name + '</span></div>'));
+                row.append($('<td style="text-align: left"/>').html(`<div class="d-flex align-items-center"><img src="images/${userId}.png" class="me-2" style="max-height: 30px; width: 30px;"><span>${data[i].name}</span></div>`));
 
                 // row.append($('<td style="text-align: left"/>')
                 // .html('<a href="' + data[i].url + '" class="tooltip">' + data[i].name +
