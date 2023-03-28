@@ -18,6 +18,20 @@ const borderColors = {
     institutions: "rgba(54, 162, 235, 1)",
 };
 
+//random color
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
+//variable global
+let chartByYearAndSourceInstance = null;
+
 function getDefaultChartOptions() {
     return {
         scales: {
@@ -51,10 +65,13 @@ function generateChartData(
     };
 }
 
-// Función para crear el gráfico utilizando Chart.js
-
 function createChartByYearAndSource(years, numArticlesByYearAndSource) {
     const ctx = document.getElementById("chart1").getContext("2d");
+
+    // Destruye la instancia del gráfico anterior si existe.
+    if (chartByYearAndSourceInstance) {
+        chartByYearAndSourceInstance.destroy();
+    }
 
     // Extraer datos para cada fuente
     const scopusData = years.map(
@@ -92,7 +109,8 @@ function createChartByYearAndSource(years, numArticlesByYearAndSource) {
 
     const chartOptions = getDefaultChartOptions();
 
-    new Chart(ctx, {
+    // Almacena la instancia del gráfico en la variable global.
+    chartByYearAndSourceInstance = new Chart(ctx, {
         type: "bar",
         data: chartData,
         options: chartOptions,
@@ -108,23 +126,13 @@ function createChartBySource(sources, numArticlesBySource) {
     const labels = sources;
     const datasetLabels = ["Cantidad de publicaciones por fuente"];
     const data = [sources.map((source) => numArticlesBySource[source])];
-    const chartBackgroundColors = [
-        backgroundColors.scopus,
-        backgroundColors.wos,
-        backgroundColors.both,
-    ];
-    const chartBorderColors = [
-        borderColors.scopus,
-        borderColors.wos,
-        borderColors.both,
-    ];
 
     const chartData = generateChartData(
         labels,
         datasetLabels,
         data,
-        chartBackgroundColors,
-        chartBorderColors
+        [],
+        []
     );
 
     const chartOptions = getDefaultChartOptions();
@@ -135,6 +143,7 @@ function createChartBySource(sources, numArticlesBySource) {
         options: chartOptions,
     });
 }
+
 function getTopNAuthors(numArticlesByAuthor, n = 10) {
     return Object.entries(numArticlesByAuthor)
         .sort((a, b) => b[1] - a[1])

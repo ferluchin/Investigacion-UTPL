@@ -1,16 +1,16 @@
-import {
-    processDataByYearAndSource,
-    processDataBySource,
-    processDataByAuthor,
-    processDataByCitations,
-    processDataByTopCited,
-    processDataByYearAndCitations,
-    processDataByInstitution,
-} from "./utils.js";
+// app.js
+import { processDataByYearAndSource } from "./chartYearAndSource.js";
+import { processDataBySource } from "./chartBySource.js";
+import { processDataByAuthor } from "./chartByAuthor.js";
+import { processDataByCitations } from "./chartByCitations.js";
+import { processDataByTopCited } from "./chartTopCited.js";
+//import { processDataByYearAndCitations } from "./chartYearAndCitations.js";
+import { processDataByInstitution } from "./chartByInstitution.js";
+import { processDataLanguages } from "./chartLanguagePie.js";
 
 // Leer el archivo CSV
 function fetchAndProcessData() {
-    return fetch("Combinado-WoS-Scopus.csv")
+    return fetch("./data/new-wos-scopus.csv")
         .then((response) => response.text())
         .then((csvData) => {
             processDataByYearAndSource(csvData);
@@ -18,8 +18,9 @@ function fetchAndProcessData() {
             processDataByAuthor(csvData);
             processDataByCitations(csvData);
             processDataByTopCited(csvData);
-            processDataByYearAndCitations(csvData);
+            // processDataByYearAndCitations(csvData);
             processDataByInstitution(csvData);
+            processDataLanguages(csvData);
             // Devuelve una función que acepta un parámetro 'year'
             return function (year) {
                 processDataByAuthor(csvData, year);
@@ -30,4 +31,4 @@ function fetchAndProcessData() {
         );
 }
 
-export { fetchAndProcessData };
+export { fetchAndProcessData, processDataByAuthor };

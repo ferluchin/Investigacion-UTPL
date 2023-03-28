@@ -1,6 +1,6 @@
 async function extractKeywords() {
     try {
-        const response = await fetch("Combinado-WoS-Scopus.csv");
+        const response = await fetch("./data/new-wos-scopus.csv");
         const csvData = await response.text();
         processData(csvData);
     } catch (error) {

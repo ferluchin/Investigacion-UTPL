@@ -1,8 +1,23 @@
-//import * as Papa from 'papaparse';
-
 console.log('search.js cargado');
 
+let table;
+
 window.addEventListener('DOMContentLoaded', function () {
+    // Inicializa DataTables aquí
+    table = $('#searchResultsTable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
+            
+        },
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+
     document.getElementById('searchForm').addEventListener('submit', function (event) {
         event.preventDefault();
         const searchInput = document.getElementById('searchInput');
@@ -13,13 +28,13 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
             search(keyword);
         }
-        return false; // Agrega esta línea
+        return false;
     });
 });
 
 function search(keyword) {
     console.log('Buscando:', keyword);
-    Papa.parse('Combinado-WoS-Scopus.csv', {
+    Papa.parse('./data/new-wos-scopus.csv', {
         download: true,
         header: true,
         complete: function (results) {
@@ -39,54 +54,52 @@ function search(keyword) {
                 const title = row['Title'];
                 const keywords = row['Author Keywords'];
                 const citations = row['Cited by'];
+                const source = row['Fuente'];
+
                 if (!titlesMap.has(title)) {
-                    titlesMap.set(title, { authors: [], keywords, citations });
+                    titlesMap.set(title, { authors: [], keywords, citations, source });
                 }
                 titlesMap.get(title).authors.push(authors);
             });
 
             console.log('Mapa de títulos:', titlesMap);
 
-            const searchResultsTable = document.getElementById('searchResultsTable');
-            const tbody = searchResultsTable.querySelector('tbody');
-            tbody.innerHTML = '';
-
-            // Modificación
             const sortedResults = Array.from(titlesMap, ([title, data]) => {
                 const authors = [...new Set(data.authors.map(a => a.split(', ')).flat())].join(', ');
                 const keywords = data.keywords;
                 const citations = data.citations;
+                const source = data.source;
 
                 return {
                     title,
                     authors,
                     keywords,
-                    citations
+                    citations,
+                    source
                 };
             }).sort((a, b) => b.citations - a.citations);
             console.log('Resultados ordenados:', sortedResults);
 
+            // Borra las filas existentes en la tabla
+            table.clear().draw();
+
+            // Añade filas a la tabla usando DataTables
             sortedResults.forEach(data => {
-                const tr = document.createElement('tr');
-                const titleTd = document.createElement('td');
-                titleTd.textContent = data.title;
-                tr.appendChild(titleTd);
+                let sourceHTML = "";
+                if (data.source.includes("Web of Science")) {
+                    sourceHTML += '<img src="images/wos-logo.png" alt="Web of Science" class="tech-logo">';
+                }
+                if (data.source.includes("Scopus")) {
+                    sourceHTML += '<img src="images/scopus-logo.png" alt="Scopus" class="tech-logo">';
+                }
 
-                const authorsTd = document.createElement('td');
-                authorsTd.innerHTML = data.authors;
-                tr.appendChild(authorsTd);
-
-                // Agrega la columna de palabras clave
-                const keywordsTd = document.createElement('td');
-                keywordsTd.innerHTML = data.keywords;
-                tr.appendChild(keywordsTd);
-
-                // Agrega la columna de citas
-                const citationsTd = document.createElement('td');
-                citationsTd.innerHTML = data.citations;
-                tr.appendChild(citationsTd);
-
-                tbody.appendChild(tr);
+                table.row.add([
+                    data.title,
+                    data.authors,
+                    data.keywords,
+                    data.citations,
+                    sourceHTML
+                ]).draw();
             });
         },
         error: function (err, file, inputElem, reason) {
