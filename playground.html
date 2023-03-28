@@ -9,12 +9,31 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <div id="navbar-container"></div>
     <div class="container">
         <!-- Aquí va el contenido principal de la página -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="yearSelector" class="form-label">Seleccionar año:</label>
+                    <!-- <select class="form-select" id="yearSelector">  
+                    </select> -->
+                    <select id="yearSelect" class="form-select"></select>
+             
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <button class="btn btn-primary" id="updateChartBtn">Actualizar gráfico</button>
+                </div>
+            </div>
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <!-- final contenido principal -->
     </div>
     <script src="./style/navbar.js"></script>
     <script>
@@ -25,7 +44,7 @@
         }
         loadNavbar();
     </script>
-
+    <script type="module" src="./javascript/autoresTopYear.js"></script>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
