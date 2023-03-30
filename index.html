@@ -57,7 +57,7 @@
         <h2>Top 10 de los autores más productivos</h2>
 
         <h3>Seleccione el año:</h3>
-        <select id="yearSelector" >
+        <select id="yearSelector">
             <option value="2015">2015</option>
             <option value="2016">2016</option>
             <option value="2017">2017</option>
@@ -100,7 +100,8 @@
             tendencias o
             patrones, como si las publicaciones más recientes tienden a tener más citas que las antiguas, o si hay una
             distribución uniforme de citas a lo largo del tiempo. Un gráfico de dispersión es útil para mostrar la
-            distribución de los datos en dos dimensiones y para identificar correlaciones, agrupaciones o posibles outliers. En este
+            distribución de los datos en dos dimensiones y para identificar correlaciones, agrupaciones o posibles
+            outliers. En este
             caso
             específico, permite evaluar el impacto de las publicaciones a lo largo del tiempo en función de la cantidad
             de citas
@@ -150,6 +151,8 @@
             loadNavbar();
         </script>
 
+
+
         <script type="module" src="./javascript/app.js"></script>
         <!-- <script type="module" src="search.js"></script> -->
         <script type="module" src="./javascript/keywords.js"></script>
@@ -174,6 +177,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script>
         initNavbar();
+    </script>
+
+    <!-- cargar footer -->
+    <div id="footer-container"></div>
+    <script>
+        async function loadFooter() {
+            const response = await fetch("footer.html");
+            const footerContent = await response.text();
+            document.getElementById("footer-container").innerHTML = footerContent;
+        }
+        loadFooter();
     </script>
 </body>
 
