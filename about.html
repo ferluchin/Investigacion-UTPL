@@ -93,7 +93,18 @@
         integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./style/navbar.js"></script>
-
+    
+    <!-- cargar footer -->
+    <div id="footer-container"></div>
+    <script>
+        async function loadFooter() {
+            const response = await fetch("footer.html");
+            const footerContent = await response.text();
+            document.getElementById("footer-container").innerHTML = footerContent;
+        }
+        loadFooter();
+    </script>
+    <!-- fin cargar footer -->
 </body>
 
 </html>

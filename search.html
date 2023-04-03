@@ -76,7 +76,17 @@
         }
         loadNavbar();
     </script>
-
+    <!-- cargar footer -->
+    <div id="footer-container"></div>
+    <script>
+        async function loadFooter() {
+            const response = await fetch("footer.html");
+            const footerContent = await response.text();
+            document.getElementById("footer-container").innerHTML = footerContent;
+        }
+        loadFooter();
+    </script>
+    <!-- fin cargar footer -->
 </body>
 
 </html>
