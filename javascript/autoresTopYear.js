@@ -1,3 +1,6 @@
+// autoresTopYear.js
+import { loadCSVAndGenerateCitedChart } from './mostCitedAuthors.js';
+
 async function loadCSVAndGenerateChart(selectedYear) {
     const response = await fetch("../data/new-wos-scopus.csv");
     const csvText = await response.text();
@@ -7,11 +10,14 @@ async function loadCSVAndGenerateChart(selectedYear) {
         skipEmptyLines: true,
     });
 
-    const allYears = parsedData.data.map((entry) => entry.Year);
-    const uniqueYears = Array.from(new Set(allYears));
-    populateYearSelect(uniqueYears);
+    if (typeof selectedYear === 'undefined') {
+        const allYears = parsedData.data.map((entry) => entry.Year);
+        const uniqueYears = Array.from(new Set(allYears));
+        populateYearSelect(uniqueYears);
+    }
 
     processDataAndGenerateChart(parsedData.data, selectedYear);
+    loadCSVAndGenerateCitedChart(selectedYear);
 }
 
 function processDataAndGenerateChart(data, selectedYear) {
@@ -90,4 +96,5 @@ loadCSVAndGenerateChart();
 document.getElementById("yearSelect").addEventListener("change", (event) => {
     const selectedYear = parseInt(event.target.value, 10);
     loadCSVAndGenerateChart(selectedYear);
+    loadCSVAndGenerateCitedChart(selectedYear);
 });

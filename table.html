@@ -37,8 +37,7 @@
 
         <p class="text-muted small text-center mb-4">
             Datos extraídos de Google Scholar: "nombre", "citas", "índice h" e "índice i10" provienen del perfil del
-            autor; "año" indica el año de la primera cita. Las columnas marcadas con "/y" indican la división por años
-            desde la primera citación.
+            autor; "año" indica el año de la primera cita.
         </p>
     </div>
 
@@ -101,7 +100,7 @@
             return cleanedData;
         }
         function populateTable(data, maxResearchers) {
-            console.log(maxResearchers); 
+            console.log(maxResearchers);
             // Elimina la línea de asignación de maxResearchers de la función
             $("#stats tbody").empty(); // Agrega esta línea para limpiar las filas existentes antes de agregar las nuevas filas
 
@@ -139,7 +138,7 @@
         }
         // http://tablesorter.com/docs/
         $(document).ready(async function () {
-            
+
             const data = await loadData();
             console.log(data.length)
             const rowSelector = $("#rowSelector");
@@ -167,32 +166,40 @@
 
     </p style="margin-top: 300px">
 
-</body>
+    <script>
+        async function loadNavbar() {
+            const response = await fetch('navbar.html');
+            const navbarContent = await response.text();
+            document.getElementById('navbar-container').innerHTML = navbarContent;
+        }
+        loadNavbar();
+    </script>
 
-</div>
-
-<script>
-    async function loadNavbar() {
-        const response = await fetch('navbar.html');
-        const navbarContent = await response.text();
-        document.getElementById('navbar-container').innerHTML = navbarContent;
-    }
-    loadNavbar();
-</script>
-
-<!-- jQuery library -->
-<!-- <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+    <!-- jQuery library -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
     integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script> -->
 
-<!-- Popper.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
-    integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!-- Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
-    integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="./style/navbar.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+        integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./style/navbar.js"></script>
+    <!-- cargar footer -->
+    <div id="footer-container"></div>
+    <script>
+        async function loadFooter() {
+            const response = await fetch("footer.html");
+            const footerContent = await response.text();
+            document.getElementById("footer-container").innerHTML = footerContent;
+        }
+        loadFooter();
+    </script>
+    <!-- fin cargar footer -->
 </body>
+
 </html>

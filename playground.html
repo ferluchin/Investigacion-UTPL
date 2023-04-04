@@ -17,20 +17,34 @@
     <div class="container">
         <!-- Aquí va el contenido principal de la página -->
 
+        <div id="navbar-container"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="yearSelector" class="form-label">Seleccionar año:</label>
-                    <!-- <select class="form-select" id="yearSelector">  
-                    </select> -->
-                    <select id="yearSelect" class="form-select"></select>
-             
+            <!-- Aquí va el contenido principal de la página -->
+
+            <div class="container">
+                <br>
+                <div class="row chart-container justify-content-center">
+                    <div class="col-md-4 my-auto text-center">
+                        <label for="yearSelector" class="form-label">Seleccionar año:</label>
+                        <select id="yearSelect" class="form-select"></select>
+                    </div>
+                    <!-- <div class="col-md-4 my-auto text-center">
+                        <button class="btn btn-primary" id="updateChartBtn">Actualizar gráfico</button>
+                    </div> -->
                 </div>
-                <div class="col-md-6 d-flex align-items-end">
-                    <button class="btn btn-primary" id="updateChartBtn">Actualizar gráfico</button>
+                <br>
+                <h2>Top 10 autores con más artículos publicados en el año <span id="selectedYear"></span></h2>
+                <div class="chart-container">
+                    <canvas id="myChart"></canvas>
+                </div>
+
+                <h2>Top 10 autores más citados en el año <span id="selectedYear"></span></h2>
+                <div class="chart-container">
+                    <canvas id="myCitedChart"></canvas>
                 </div>
             </div>
-            <canvas id="myChart"></canvas>
+
+            <!-- final contenido principal -->
         </div>
 
         <!-- final contenido principal -->
@@ -44,7 +58,19 @@
         }
         loadNavbar();
     </script>
+    <!-- cargar footer -->
+    <div id="footer-container"></div>
+    <script>
+        async function loadFooter() {
+            const response = await fetch("footer.html");
+            const footerContent = await response.text();
+            document.getElementById("footer-container").innerHTML = footerContent;
+        }
+        loadFooter();
+    </script>
+
     <script type="module" src="./javascript/autoresTopYear.js"></script>
+    <script type="module" src="./javascript/mostCitedAuthors.js"></script>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
