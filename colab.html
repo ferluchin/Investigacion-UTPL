@@ -21,8 +21,15 @@
         <div class="chart-container">
             <svg id="coauthorshipNetwork" width="960" height="600"></svg>
         </div>
+        <br>
+        <div id="descripcion-grafico">
+            <p>Esta visualización de red muestra las relaciones de coautoría entre los autores, lo que ayuda a los
+                usuarios a identificar las colaboraciones y grupos de investigación dentro de la institución.</p>
+        </div>
     </div>
     <br>
+
+    <script type="module" src="./javascript/coauthorshipNetwork.js"></script>
 
     <!-- cargar navbar -->
     <script src="./style/navbar.js"></script>
@@ -34,6 +41,7 @@
         }
         loadNavbar();
     </script>
+
     <!-- cargar footer -->
     <div id="footer-container"></div>
     <script>
