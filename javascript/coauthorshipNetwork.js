@@ -7,15 +7,45 @@ Papa.parse("./data/new-wos-scopus.csv", {
     download: true,
     complete: function (results) {
         data = results.data;
-        createCoauthorshipNetwork(data);
+        fillYearSelect(data);
+        createCoauthorshipNetwork(data, selectedYear);
+        //createCoauthorshipNetwork(data, "all");
     },
 });
 
-function createCoauthorshipNetwork(data) {
+function getUniqueYears(data) {
+    const years = new Set();
+    data.forEach((row) => {
+        years.add(row.Year);
+    });
+    return Array.from(years).sort();
+}
+
+function fillYearSelect(data) {
+    const yearSelect = document.getElementById("yearSelect");
+    const years = getUniqueYears(data);
+
+    years.forEach((year) => {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+    });
+}
+
+function createCoauthorshipNetwork(data, selectedYear) {
     const authors = new Map();
     const links = [];
 
-    data.forEach((row) => {
+    // Filtrar los datos en función del año seleccionado
+    const filteredData = data.filter((row) => {
+        if (selectedYear === "all") {
+            return true;
+        }
+        return row.Year === selectedYear;
+    });
+
+    filteredData.forEach((row) => {
         const authorList = row.Authors.split(";");
 
         authorList.forEach((author, index) => {
@@ -102,3 +132,27 @@ function createCoauthorshipNetwork(data) {
             .on("end", dragended);
     }
 }
+
+document.getElementById("yearSelect").addEventListener("change", (event) => {
+    const selectedYear = event.target.value;
+    // Limpia el SVG antes de recrear la visualización
+    d3.select("#coauthorshipNetwork").selectAll("*").remove();
+    createCoauthorshipNetwork(data, selectedYear);
+});
+
+const svg = d3.select("#coauthorshipNetwork");
+resizeSVG(); // Llama a la función resizeSVG para ajustar el tamaño inicial del SVG
+
+// Función para ajustar el tamaño del SVG de acuerdo al tamaño de la ventana
+function resizeSVG() {
+    const containerWidth = d3.select(".chart-container").node().getBoundingClientRect().width;
+    svg.attr("width", containerWidth).attr("height", containerWidth * 0.6);
+    createCoauthorshipNetwork(data, "all");
+}
+
+// Controlador de eventos para el cambio de tamaño de la ventana
+window.addEventListener("resize", () => {
+    // Limpia el SVG antes de recrear la visualización
+    d3.select("#coauthorshipNetwork").selectAll("*").remove();
+    resizeSVG();
+});

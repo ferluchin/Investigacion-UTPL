@@ -18,8 +18,21 @@
     <div class="container">
         <br>
         <h2>Análisis de coautoría y colaboración</h2>
+        <br>
+        <!-- <div class="col-md-4 my-auto text-center"> -->
+        <div class="row chart-container justify-content-center">
+            <div class="col-md-4 my-auto text-center">
+
+                <label for="yearSelect" class="form-label">Seleccionar año:</label>
+                <select id="yearSelect" class="form-select">
+                    <option value="all">Todos los años</option>
+                </select>
+            </div>
+        </div>
+
+        <br>
         <div class="chart-container">
-            <svg id="coauthorshipNetwork" width="960" height="600"></svg>
+            <svg id="coauthorshipNetwork"></svg>
         </div>
         <br>
         <div id="descripcion-grafico">
@@ -53,8 +66,6 @@
         loadFooter();
     </script>
 
-    <script type="module" src="./javascript/autoresTopYear.js"></script>
-    <script type="module" src="./javascript/mostCitedAuthors.js"></script>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
