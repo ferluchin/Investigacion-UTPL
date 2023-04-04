@@ -17,37 +17,34 @@
     <div class="container">
         <!-- Aquí va el contenido principal de la página -->
 
-        <div id="navbar-container"></div>
         <div class="container">
-            <!-- Aquí va el contenido principal de la página -->
-
-            <div class="container">
-                <br>
-                <div class="row chart-container justify-content-center">
-                    <div class="col-md-4 my-auto text-center">
-                        <label for="yearSelector" class="form-label">Seleccionar año:</label>
-                        <select id="yearSelect" class="form-select"></select>
-                    </div>
-                    <!-- <div class="col-md-4 my-auto text-center">
+            <br>
+            <div class="row chart-container justify-content-center">
+                <div class="col-md-4 my-auto text-center">
+                    <label for="yearSelector" class="form-label">Seleccionar año:</label>
+                    <select id="yearSelect" class="form-select"></select>
+                </div>
+                <!-- <div class="col-md-4 my-auto text-center">
                         <button class="btn btn-primary" id="updateChartBtn">Actualizar gráfico</button>
                     </div> -->
-                </div>
-                <br>
-                <h2>Top 10 autores con más artículos publicados en el año <span id="selectedYear"></span></h2>
-                <div class="chart-container">
-                    <canvas id="myChart"></canvas>
-                </div>
-
-                <h2>Top 10 autores más citados en el año <span id="selectedYear"></span></h2>
-                <div class="chart-container">
-                    <canvas id="myCitedChart"></canvas>
-                </div>
+            </div>
+            <br>
+            <h2>Top 10 autores con más artículos publicados en el año <span id="selectedYear"></span></h2>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
             </div>
 
-            <!-- final contenido principal -->
+            <h2>Top 10 autores más citados en el año <span id="selectedYear"></span></h2>
+            <div class="chart-container">
+                <canvas id="myCitedChart">
+                </canvas>
+            </div>
         </div>
 
         <!-- final contenido principal -->
+    </div>
+
+    <!-- final contenido principal -->
     </div>
     <script src="./style/navbar.js"></script>
     <script>
