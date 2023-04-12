@@ -54,6 +54,7 @@
             <canvas id="languagePieChart"></canvas>
         </div>
 
+        <!-- 
         <h2>Top 10 de los autores más productivos</h2>
 
         <h3>Seleccione el año:</h3>
@@ -78,6 +79,7 @@
             visualización destaca a los autores que han contribuido significativamente a la investigación en la
             Universidad.
         </p>
+        -->
 
         <h2>Top 10 Cited Chart</h2>
         <div class="chart-container">
@@ -86,10 +88,10 @@
         </div>
         <p class="scatter-description">
             Este gráfico muestra el top 10 de los artículos más citados. La visualización permite identificar los
-            trabajos
-            que han tenido un mayor impacto en el campo de estudio, en función de la cantidad de citas recibidas.
+            trabajos que han tenido un mayor impacto en el campo de estudio, en función de la cantidad de citas recibidas.
         </p>
 
+        <!--         
         <h2>Año de publicación y las citas</h2>
         <div class="chart-container">
             <canvas id="yearCitationScatterChart"></canvas>
@@ -97,16 +99,13 @@
         <p class="scatter-description">
             Este gráfico de dispersión muestra la relación entre el año de publicación y la cantidad de citas que
             han recibido las publicaciones. Al representar los datos de esta manera, se pueden identificar posibles
-            tendencias o
-            patrones, como si las publicaciones más recientes tienden a tener más citas que las antiguas, o si hay una
+            tendencias o patrones, como si las publicaciones más recientes tienden a tener más citas que las antiguas, o si hay una
             distribución uniforme de citas a lo largo del tiempo. Un gráfico de dispersión es útil para mostrar la
             distribución de los datos en dos dimensiones y para identificar correlaciones, agrupaciones o posibles
-            outliers. En este
-            caso
-            específico, permite evaluar el impacto de las publicaciones a lo largo del tiempo en función de la cantidad
-            de citas
-            que reciben.
-        </p>
+            outliers. En este caso específico, permite evaluar el impacto de las publicaciones a lo largo del tiempo en función de la cantidad
+            de citas que reciben.
+        </p> 
+        -->
 
         <h2>Cantidad de publicaciones por afiliación institucional</h2>
         <div class="chart-container">
@@ -133,13 +132,13 @@
 
         <script src="./style/navbar.js"></script>
         <script type="module">
-            import { fetchAndProcessData, processDataByAuthor } from './javascript/app.js';
+            import {fetchAndProcessData, processDataByAuthor} from './javascript/app.js';
             fetchAndProcessData();
-            const yearSelector = document.getElementById("yearSelector");
-            yearSelector.addEventListener("change", function () {
-                const selectedYear = yearSelector.value;
-                processDataByAuthor(selectedYear);
-            });
+            // const yearSelector = document.getElementById("yearSelector");
+            // yearSelector.addEventListener("change", function () {
+            //     const selectedYear = yearSelector.value;
+            //     processDataByAuthor(selectedYear);
+            // });
 
             async function loadNavbar() {
                 const response = await fetch('navbar.html');

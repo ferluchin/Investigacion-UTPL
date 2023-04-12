@@ -15,16 +15,17 @@ function fetchAndProcessData() {
         .then((csvData) => {
             processDataByYearAndSource(csvData);
             processDataBySource(csvData);
-            processDataByAuthor(csvData);
+            //processDataByAuthor(csvData);
             processDataByCitations(csvData);
             processDataByTopCited(csvData);
             // processDataByYearAndCitations(csvData);
             processDataByInstitution(csvData);
             processDataLanguages(csvData);
             // Devuelve una función que acepta un parámetro 'year'
-            return function (year) {
-                processDataByAuthor(csvData, year);
-            };
+
+            // return function (year) {
+            //     processDataByAuthor(csvData, year);
+            // };
         })
         .catch((error) =>
             console.error("Error al leer el archivo CSV:", error)
