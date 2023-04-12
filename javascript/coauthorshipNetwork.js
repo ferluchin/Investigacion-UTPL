@@ -80,7 +80,7 @@ function createCoauthorshipNetwork(data, selectedAuthor) {
         .selectAll("circle")
         .data(nodes)
         .join("circle")
-        .attr("r", (d) => Math.sqrt(d.count) * 3)
+        .attr("r", (d) => Math.sqrt(d.count) * 5)
         .attr("fill", "#69b3a2")
         .call(drag(simulation));
 
@@ -133,6 +133,34 @@ function createCoauthorshipNetwork(data, selectedAuthor) {
             .on("drag", dragged)
             .on("end", dragended);
     }
+
+    // Agrega la función zoomed y el controlador de zoom
+    function zoomed(event) {
+        const { transform } = event;
+        svg.attr("transform", transform);
+    }
+
+    const zoomHandler = d3.zoom().on("zoom", zoomed);
+    svg.call(zoomHandler);
+
+    // Agrega la función zoomed y el controlador de zoom
+    function zoomed(event) {
+        const { transform } = event;
+        svg.attr("transform", transform);
+    }
+
+    // Funciones para acercar y alejar con botones
+    function zoomIn() {
+        zoomHandler.scaleBy(svg.transition().duration(500), 1.2);
+    }
+
+    function zoomOut() {
+        zoomHandler.scaleBy(svg.transition().duration(500), 0.8);
+    }
+
+    // Agrega event listeners a los botones de zoom
+    document.getElementById("zoom-in").addEventListener("click", zoomIn);
+    document.getElementById("zoom-out").addEventListener("click", zoomOut);
 }
 
 function loadAuthors(data) {
