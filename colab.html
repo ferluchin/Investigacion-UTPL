@@ -19,17 +19,14 @@
         <br>
         <h2>Análisis de coautoría y colaboración</h2>
         <br>
-        <!-- <div class="col-md-4 my-auto text-center"> -->
         <div class="row chart-container justify-content-center">
             <div class="col-md-4 my-auto text-center">
-
-                <label for="yearSelect" class="form-label">Seleccionar año:</label>
-                <select id="yearSelect" class="form-select">
-                    <option value="all">Todos los años</option>
+                <label for="authorSelect">Seleccionar autor:</label>
+                <select id="authorSelect" class="form-select">
+                    <option value="">Elegir un autor...</option>
                 </select>
             </div>
         </div>
-
         <br>
         <div class="chart-container">
             <svg id="coauthorshipNetwork"></svg>
@@ -41,7 +38,7 @@
         </div>
     </div>
     <br>
-
+    
     <script type="module" src="./javascript/coauthorshipNetwork.js"></script>
 
     <!-- cargar navbar -->

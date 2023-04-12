@@ -7,42 +7,24 @@ Papa.parse("./data/new-wos-scopus.csv", {
     download: true,
     complete: function (results) {
         data = results.data;
-        fillYearSelect(data);
-        createCoauthorshipNetwork(data, selectedYear);
-        //createCoauthorshipNetwork(data, "all");
+        loadAuthors(data);
+        createCoauthorshipNetwork(data, "");
     },
 });
 
-function getUniqueYears(data) {
-    const years = new Set();
-    data.forEach((row) => {
-        years.add(row.Year);
-    });
-    return Array.from(years).sort();
-}
-
-function fillYearSelect(data) {
-    const yearSelect = document.getElementById("yearSelect");
-    const years = getUniqueYears(data);
-
-    years.forEach((year) => {
-        const option = document.createElement("option");
-        option.value = year;
-        option.textContent = year;
-        yearSelect.appendChild(option);
-    });
-}
-
-function createCoauthorshipNetwork(data, selectedYear) {
+function createCoauthorshipNetwork(data, selectedAuthor) {
+    if (selectedAuthor === "") {
+        return; // si no se ha seleccionado ningún autor, no se crea el gráfico
+    }
     const authors = new Map();
     const links = [];
 
-    // Filtrar los datos en función del año seleccionado
+    // Filtrar los datos en función del autor seleccionado
     const filteredData = data.filter((row) => {
-        if (selectedYear === "all") {
+        if (selectedAuthor === "") {
             return true;
         }
-        return row.Year === selectedYear;
+        return row.Authors.includes(selectedAuthor);
     });
 
     filteredData.forEach((row) => {
@@ -70,7 +52,13 @@ function createCoauthorshipNetwork(data, selectedYear) {
 
     const simulation = d3
         .forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id((d) => d.name).distance(100))
+        .force(
+            "link",
+            d3
+                .forceLink(links)
+                .id((d) => d.name)
+                .distance(100)
+        )
         .force("charge", d3.forceManyBody().strength(-50))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
@@ -98,8 +86,7 @@ function createCoauthorshipNetwork(data, selectedYear) {
     node.append("title").text((d) => d.name);
 
     function ticked() {
-        link
-            .attr("x1", (d) => d.source.x)
+        link.attr("x1", (d) => d.source.x)
             .attr("y1", (d) => d.source.y)
             .attr("x2", (d) => d.target.x)
             .attr("y2", (d) => d.target.y);
@@ -133,11 +120,27 @@ function createCoauthorshipNetwork(data, selectedYear) {
     }
 }
 
-document.getElementById("yearSelect").addEventListener("change", (event) => {
-    const selectedYear = event.target.value;
-    // Limpia el SVG antes de recrear la visualización
+function loadAuthors(data) {
+    const authors = new Set();
+
+    for (const row of data) {
+        const authorList = row.Authors.split(";");
+        authorList.forEach((author) => authors.add(author.trim()));
+    }
+
+    const authorSelect = document.getElementById("authorSelect");
+    authors.forEach((author) => {
+        const option = document.createElement("option");
+        option.text = author;
+        option.value = author;
+        authorSelect.add(option);
+    });
+}
+
+document.getElementById("authorSelect").addEventListener("change", (event) => {
+    const selectedAuthor = event.target.value;
     d3.select("#coauthorshipNetwork").selectAll("*").remove();
-    createCoauthorshipNetwork(data, selectedYear);
+    createCoauthorshipNetwork(data, selectedAuthor);
 });
 
 const svg = d3.select("#coauthorshipNetwork");
@@ -145,7 +148,10 @@ resizeSVG(); // Llama a la función resizeSVG para ajustar el tamaño inicial de
 
 // Función para ajustar el tamaño del SVG de acuerdo al tamaño de la ventana
 function resizeSVG() {
-    const containerWidth = d3.select(".chart-container").node().getBoundingClientRect().width;
+    const containerWidth = d3
+        .select(".chart-container")
+        .node()
+        .getBoundingClientRect().width;
     svg.attr("width", containerWidth).attr("height", containerWidth * 0.6);
     createCoauthorshipNetwork(data, "all");
 }
