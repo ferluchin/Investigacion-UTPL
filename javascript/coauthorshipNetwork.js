@@ -16,6 +16,7 @@ function createCoauthorshipNetwork(data, selectedAuthor) {
     if (selectedAuthor === "") {
         return; // si no se ha seleccionado ningún autor, no se crea el gráfico
     }
+
     const authors = new Map();
     const links = [];
 
@@ -83,7 +84,19 @@ function createCoauthorshipNetwork(data, selectedAuthor) {
         .attr("fill", "#69b3a2")
         .call(drag(simulation));
 
+    // Agrega el título a los nodos para mostrar el nombre del autor al pasar el mouse por encima
     node.append("title").text((d) => d.name);
+
+    // Agrega etiquetas de texto para los nodos
+    const labels = svg
+        .append("g")
+        .attr("class", "labels")
+        .selectAll("text")
+        .data(nodes)
+        .join("text")
+        .text((d) => d.name)
+        .attr("font-size", "10px")
+        .attr("text-anchor", "middle");
 
     function ticked() {
         link.attr("x1", (d) => d.source.x)
@@ -92,6 +105,8 @@ function createCoauthorshipNetwork(data, selectedAuthor) {
             .attr("y2", (d) => d.target.y);
 
         node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+        // Actualiza la posición de las etiquetas de texto junto a los nodos
+        labels.attr("x", (d) => d.x).attr("y", (d) => d.y);
     }
 
     function drag(simulation) {
