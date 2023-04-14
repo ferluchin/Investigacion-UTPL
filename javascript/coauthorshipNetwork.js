@@ -141,13 +141,7 @@ function createCoauthorshipNetwork(data, selectedAuthor) {
     }
 
     const zoomHandler = d3.zoom().on("zoom", zoomed);
-    svg.call(zoomHandler);
-
-    // Agrega la función zoomed y el controlador de zoom
-    function zoomed(event) {
-        const { transform } = event;
-        svg.attr("transform", transform);
-    }
+    //svg.call(zoomHandler);
 
     // Funciones para acercar y alejar con botones
     function zoomIn() {

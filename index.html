@@ -20,6 +20,18 @@
         <h1 class="text-center my-4">
             Visualización de datos de artículos de investigación
         </h1>
+
+        <!-- Botones de descarga -->
+        <div class="row my-4">
+            <div class="col-md-12">
+                <h3>Descargar datos:</h3>
+                <a href="./data/new-wos-scopus.csv" download="new-wos-scopus.csv" class="btn btn-primary">
+                    Descargar datos en CSV
+                </a>
+                <button class="btn btn-primary" id="downloadPDF">Descargar en PDF</button>
+                <button class="btn btn-success" id="downloadExcel">Descargar en Excel (XLSX)</button>
+            </div>
+        </div>
         <!-- Sección de gráficos -->
         <div class="row">
             <div class="col-md-12">
@@ -88,7 +100,8 @@
         </div>
         <p class="scatter-description">
             Este gráfico muestra el top 10 de los artículos más citados. La visualización permite identificar los
-            trabajos que han tenido un mayor impacto en el campo de estudio, en función de la cantidad de citas recibidas.
+            trabajos que han tenido un mayor impacto en el campo de estudio, en función de la cantidad de citas
+            recibidas.
         </p>
 
         <!--         
@@ -132,7 +145,7 @@
 
         <script src="./style/navbar.js"></script>
         <script type="module">
-            import {fetchAndProcessData, processDataByAuthor} from './javascript/app.js';
+            import { fetchAndProcessData, processDataByAuthor } from './javascript/app.js';
             fetchAndProcessData();
             // const yearSelector = document.getElementById("yearSelector");
             // yearSelector.addEventListener("change", function () {
@@ -157,6 +170,10 @@
         <script type="module" src="./javascript/keywords.js"></script>
 
     </div>
+    <!-- librerias para descargas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script type="module" src="./javascript/download.js"></script>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
