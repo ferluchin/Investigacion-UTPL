@@ -14,23 +14,25 @@
 <body>
 
     <div id="navbar-container"></div>
-    <div class="container">
-        <br>
-        <label for="yearSelect">Filtrar por año:</label>
-        <select id="year-selector" class="form-select">
+    <div class="page-container">
 
-            <option value="">Todos los años</option>
-        </select>
-        <h2>Revistas y conferencias más populares</h2>
-        <br>
+        <div class="container">
+            <br>
+            <label for="yearSelect">Filtrar por año:</label>
+            <select id="year-selector" class="form-select">
 
-        <!-- cargar navbar -->
-        <script src="./style/navbar.js"></script>
+                <option value="">Todos los años</option>
+            </select>
+            <h2>Revistas y conferencias más populares</h2>
+            <br>
 
-        <!-- <div class="journals"> -->
-        <div id="journalsChart" style="width: 100%; height: 400px;"></div>
-        <!-- <canvas id="journalsChart"></canvas> -->
-    </div>
+            <!-- cargar navbar -->
+            <script src="./style/navbar.js"></script>
+
+            <!-- <div class="journals"> -->
+            <div id="journalsChart" style="width: 100%; height: 400px;"></div>
+            <!-- <canvas id="journalsChart"></canvas> -->
+        </div>
 
     </div>
     <script type="module" src="./javascript/journals.js"></script>

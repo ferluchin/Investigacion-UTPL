@@ -15,76 +15,72 @@
     <div id="navbar-container"></div>
 
     <main>
-        <div class="container">
-            <h1>Acerca del Proyecto</h1>
-            <p>
-                Este proyecto tiene como objetivo proporcionar una herramienta de búsqueda y visualización de datos para
-                facilitar la
-                exploración y el análisis de artículos científicos. Utilizando una base de datos en formato CSV que
-                contiene información
-                de artículos de diversas fuentes, como Web of Science y Scopus, la herramienta permite a los usuarios
-                buscar artículos
-                por palabras clave o títulos y visualizar datos relevantes a través de gráficos y visualizaciones
-                interactivas.
-            </p>
-            <p>
-                La implementación se basa en tecnologías web estándar, como HTML, CSS y JavaScript, y utiliza
-                bibliotecas como D3.js,
-                Chart.js y PapaParse para generar visualizaciones y analizar el archivo CSV.
+        <div class="page-container">
 
-            </p>
-            <p>
-                Este proyecto es de código abierto y está diseñado para ser fácilmente adaptable y ampliable.
-            </p>
-            <!-- Imágenes en about.html -->
-            <div class="technologies">
-                <h3>Tecnologías utilizadas</h3>
-                <div class="row">
-                    <div class="col-md-2">
-                        <img src="images/html-logo.png" alt="HTML" class="tech-logo">
-                        <p>HTML</p>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="images/css-logo.png" alt="CSS" class="tech-logo">
-                        <p>CSS</p>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="images/javascript-logo.png" alt="JavaScript" class="tech-logo">
-                        <p>JavaScript</p>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="images/d3js-logo.png" alt="D3.js" class="tech-logo">
-                        <p>D3.js</p>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="images/chartjs-logo.png" alt="Chart.js" class="tech-logo">
-                        <p>Chart.js</p>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="images/papaparse-logo.png" alt="PapaParse" class="tech-logo">
-                        <p>PapaParse</p>
+            <div class="container">
+                <h1>Acerca del Proyecto</h1>
+                <p>
+                    Este proyecto tiene como objetivo proporcionar una herramienta de búsqueda y visualización de datos
+                    para
+                    facilitar la
+                    exploración y el análisis de artículos científicos. Utilizando una base de datos en formato CSV que
+                    contiene información
+                    de artículos de diversas fuentes, como Web of Science y Scopus, la herramienta permite a los
+                    usuarios
+                    buscar artículos
+                    por palabras clave o títulos y visualizar datos relevantes a través de gráficos y visualizaciones
+                    interactivas.
+                </p>
+                <p>
+                    La implementación se basa en tecnologías web estándar, como HTML, CSS y JavaScript, y utiliza
+                    bibliotecas como D3.js,
+                    Chart.js y PapaParse para generar visualizaciones y analizar el archivo CSV.
+
+                </p>
+                <p>
+                    Este proyecto es de código abierto y está diseñado para ser fácilmente adaptable y ampliable.
+                </p>
+                <!-- Imágenes en about.html -->
+                <div class="technologies">
+                    <h3>Tecnologías utilizadas</h3>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="images/html-logo.png" alt="HTML" class="tech-logo">
+                            <p>HTML</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img src="images/css-logo.png" alt="CSS" class="tech-logo">
+                            <p>CSS</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img src="images/javascript-logo.png" alt="JavaScript" class="tech-logo">
+                            <p>JavaScript</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img src="images/d3js-logo.png" alt="D3.js" class="tech-logo">
+                            <p>D3.js</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img src="images/chartjs-logo.png" alt="Chart.js" class="tech-logo">
+                            <p>Chart.js</p>
+                        </div>
+                        <div class="col-md-2">
+                            <img src="images/papaparse-logo.png" alt="PapaParse" class="tech-logo">
+                            <p>PapaParse</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
     </main>
-    <script>
-        async function loadNavbar() {
-            const response = await fetch('navbar.html');
-            const navbarContent = await response.text();
-            document.getElementById('navbar-container').innerHTML = navbarContent;
-        }
-        loadNavbar();
-    </script>
 
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
-    
+
     <!-- Popper.js -->
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
         integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -93,17 +89,11 @@
         integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./style/navbar.js"></script>
-    
+
     <!-- cargar footer -->
     <div id="footer-container"></div>
-    <script>
-        async function loadFooter() {
-            const response = await fetch("footer.html");
-            const footerContent = await response.text();
-            document.getElementById("footer-container").innerHTML = footerContent;
-        }
-        loadFooter();
-    </script>
+    <script src="./javascript/load-elements.js"></script>
+
     <!-- fin cargar footer -->
 </body>
 
