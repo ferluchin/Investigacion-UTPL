@@ -84,3 +84,12 @@ p {
     color: #0056b3;
     text-decoration: underline;
 }
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+    height: 100vh;
+    /* Añade esta línea */
+}
