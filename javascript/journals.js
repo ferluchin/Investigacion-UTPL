@@ -8,7 +8,7 @@ async function loadCSV() {
     return Papa.parse(csvText, { header: true, delimiter: ';' }); // Especifica el delimitador aquí
 }
 
-async function showPopularJournals() {
+async function showPopularJournals(yearFilter = 'all') {
     const { data } = await loadCSV();
     console.log(data); // Verifica los datos cargados desde el archivo CSV
 
@@ -16,22 +16,25 @@ async function showPopularJournals() {
 
     for (const row of data) {
         const source = row['Source title'];
-        if (source) {
-            sourceCounts[source] = (sourceCounts[source] || 0) + 1;
+        const year = row['Year'];
+        if (yearFilter === 'all' || yearFilter === year) {
+            if (source) {
+                sourceCounts[source] = (sourceCounts[source] || 0) + 1;
+            }
         }
     }
     console.log(sourceCounts); // Verifica si las revistas y sus recuentos están correctamente acumulados
 
-    const sortedSources = Object.entries(sourceCounts).sort((a, b) => b[1] - a[1]);
-    const top10Sources = sortedSources.slice(0, 10);
+    const sortedSources = Object.entries(sourceCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
 
     // Crea una lista de etiquetas y datos para la gráfica
-    const labels = top10Sources.map(([source]) => source);
-    const dataPoints = top10Sources.map(([_, count]) => count);
+    const labels = sortedSources.map(([source]) => source);
+    const dataPoints = sortedSources.map(([_, count]) => count);
 
     console.log(labels, dataPoints); // Verifica si las etiquetas y los puntos de datos están correctamente formateados
 
     const popularJournalsDiv = document.getElementById('journalsChart');
+    popularJournalsDiv.innerHTML = ''; // Limpia el contenido del div antes de agregar una nueva gráfica
     const chartCanvas = document.createElement('canvas');
     popularJournalsDiv.appendChild(chartCanvas);
 
@@ -64,4 +67,33 @@ async function showPopularJournals() {
     });
 }
 
-showPopularJournals();
+function fillYearSelector() {
+    const yearSelector = document.getElementById('year-selector');
+    const minYear = 2010; // Reemplaza esto con el valor mínimo que desees
+    const maxYear = new Date().getFullYear(); // Año actual
+
+    for (let year = minYear; year <= maxYear; year++) {
+        const option = document.createElement('option');
+        option.value = year;
+        option.text = year;
+        yearSelector.appendChild(option);
+    }
+}
+
+
+const yearSelector = document.getElementById('year-selector');
+yearSelector.addEventListener('change', (event) => {
+    const selectedYear = event.target.value;
+    showPopularJournals(selectedYear);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    showPopularJournals();
+    fillYearSelector();
+
+    const yearSelector = document.getElementById('year-selector');
+    yearSelector.addEventListener('change', (event) => {
+        const selectedYear = event.target.value;
+        showPopularJournals(selectedYear);
+    });
+});

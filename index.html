@@ -147,20 +147,6 @@
         <script type="module">
             import { fetchAndProcessData, processDataByAuthor } from './javascript/app.js';
             fetchAndProcessData();
-            // const yearSelector = document.getElementById("yearSelector");
-            // yearSelector.addEventListener("change", function () {
-            //     const selectedYear = yearSelector.value;
-            //     processDataByAuthor(selectedYear);
-            // });
-
-            async function loadNavbar() {
-                const response = await fetch('navbar.html');
-                const navbarContent = await response.text();
-                document.getElementById('navbar-container').innerHTML = navbarContent;
-                initNavbar();
-            }
-
-            loadNavbar();
         </script>
 
 
@@ -197,15 +183,8 @@
 
     <!-- cargar footer -->
     <div id="footer-container"></div>
-    <script>
-        async function loadFooter() {
-            const response = await fetch("footer.html");
-            const footerContent = await response.text();
-            document.getElementById("footer-container").innerHTML = footerContent;
-        }
-        loadFooter();
-    </script>
-    <!-- fin cargar footer -->
+    <!-- cargar navbar y footer -->
+    <script src="./javascript/load-elements.js"></script>
 </body>
 
 </html>

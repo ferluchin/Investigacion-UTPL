@@ -16,6 +16,11 @@
     <div id="navbar-container"></div>
     <div class="container">
         <br>
+        <label for="yearSelect">Filtrar por año:</label>
+        <select id="year-selector" class="form-select">
+
+            <option value="">Todos los años</option>
+        </select>
         <h2>Revistas y conferencias más populares</h2>
         <br>
 
@@ -28,31 +33,10 @@
     </div>
 
     </div>
-
-    <!-- <script>
-        async function loadNavbar() {
-            const response = await fetch('navbar.html');
-            const navbarContent = await response.text();
-            document.getElementById('navbar-container').innerHTML = navbarContent;
-        }
-        loadNavbar();
-    </script> -->
-
-
     <script type="module" src="./javascript/journals.js"></script>
 
     <!-- cargar footer -->
     <div id="footer-container"></div>
-    <!-- <script>
-        async function loadFooter() {
-            const response = await fetch("footer.html");
-            const footerContent = await response.text();
-            document.getElementById("footer-container").innerHTML = footerContent;
-        }
-        loadFooter();
-    </script> -->
-
-
     <!-- cargar navbar y footer -->
     <script src="./javascript/load-elements.js"></script>
     <!-- jQuery library -->

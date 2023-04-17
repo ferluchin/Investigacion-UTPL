@@ -65,28 +65,10 @@
 
     <!-- Tus propios archivos JavaScript -->
     <script src="./style/navbar.js"></script>
+    
     <script type="module" src="./javascript/search.js"></script>
-
-    <script>
-        async function loadNavbar() {
-            const response = await fetch('navbar.html');
-            const navbarContent = await response.text();
-            document.getElementById('navbar-container').innerHTML = navbarContent;
-            initNavbar(); // Llama a la función initNavbar() después de cargar el contenido de navbar
-        }
-        loadNavbar();
-    </script>
-    <!-- cargar footer -->
-    <div id="footer-container"></div>
-    <script>
-        async function loadFooter() {
-            const response = await fetch("footer.html");
-            const footerContent = await response.text();
-            document.getElementById("footer-container").innerHTML = footerContent;
-        }
-        loadFooter();
-    </script>
-    <!-- fin cargar footer -->
+    <!-- cargar navbar y footer -->
+    <script src="./javascript/load-elements.js"></script>
 </body>
 
 </html>
