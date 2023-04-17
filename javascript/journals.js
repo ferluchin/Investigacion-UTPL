@@ -12,7 +12,6 @@ async function showPopularJournals() {
     const { data } = await loadCSV();
     console.log(data); // Verifica los datos cargados desde el archivo CSV
 
-
     const sourceCounts = {};
 
     for (const row of data) {
@@ -24,10 +23,11 @@ async function showPopularJournals() {
     console.log(sourceCounts); // Verifica si las revistas y sus recuentos están correctamente acumulados
 
     const sortedSources = Object.entries(sourceCounts).sort((a, b) => b[1] - a[1]);
+    const top10Sources = sortedSources.slice(0, 10);
 
     // Crea una lista de etiquetas y datos para la gráfica
-    const labels = sortedSources.map(([source]) => source);
-    const dataPoints = sortedSources.map(([_, count]) => count);
+    const labels = top10Sources.map(([source]) => source);
+    const dataPoints = top10Sources.map(([_, count]) => count);
 
     console.log(labels, dataPoints); // Verifica si las etiquetas y los puntos de datos están correctamente formateados
 
