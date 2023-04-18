@@ -27,7 +27,7 @@ def eliminar_duplicados(archivo_entrada, archivo_salida, archivo_duplicados):
                 encontrado = False
 
                 for autor in autores:
-                    if similitud(autor_actual, autor["Author Name"]) > 0.8:
+                    if similitud(autor_actual, autor["Author Name"]) > 0.9:
                         encontrado = True
                         duplicados.append((row, autor))
                         break
