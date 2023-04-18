@@ -9,57 +9,44 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://d3js.org/d3.v6.min.js"></script> <!-- Importar D3.js para la visualización de red -->
 </head>
 
 <body>
-    <div id="navbar-container">
-    </div>
+
+    <div id="navbar-container"></div>
     <div class="page-container">
+
         <div class="container">
-            <br>
-            <h2>Análisis de coautoría y colaboración</h2>
             <br>
             <div class="row chart-container justify-content-center">
                 <div class="col-md-4 my-auto text-center">
-                    <label for="authorSelect">Seleccionar autor:</label>
-                    <select id="authorSelect" class="form-select">
-                        <option value="">Elegir un autor...</option>
+                    <label for="yearSelect">Filtrar por año:</label>
+                    <select id="year-selector" class="form-select">
+
+                        <option value="">Todos los años</option>
                     </select>
                 </div>
             </div>
+            <h2>Revistas y conferencias más populares</h2>
             <br>
+
+            <!-- cargar navbar -->
+            <script src="./style/navbar.js"></script>
+
+
             <div class="chart-container">
-                <svg id="coauthorshipNetwork"></svg>
-                <div class="zoom-controls">
-                    <button id="zoom-in">Zoom In</button>
-                    <button id="zoom-out">Zoom Out</button>
-                </div>
-
+                <div id="journalsChart" style="width: 100%; height: 400px;"></div>
             </div>
-            <br>
-            <div id="descripcion-grafico">
-                <p>Esta visualización de red muestra las relaciones de coautoría entre los autores, lo que ayuda a los
-                    usuarios a identificar las colaboraciones y grupos de investigación dentro de la institución.</p>
-            </div>
-            <br>
-            <br>
+            <!-- <canvas id="journalsChart"></canvas> -->
         </div>
+
     </div>
-
-    <br>
-
-    <script type="module" src="./javascript/coauthorshipNetwork.js"></script>
-
-    <!-- cargar navbar -->
-    <script src="./style/navbar.js"></script>
+    <script type="module" src="./javascript/journals.js"></script>
 
     <!-- cargar footer -->
     <div id="footer-container"></div>
     <!-- cargar navbar y footer -->
     <script src="./javascript/load-elements.js"></script>
-
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
         integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
