@@ -25,7 +25,7 @@ https://investigacion-utpl.netlify.app/
 Para ejecutar este proyecto localmente, sigue estos pasos:
 
 1. Clona este repositorio en tu máquina local.
-2. Abre el archivo `index.html` en tu navegador web preferido.
+2. Abre el archivo `index.html` en tu navegador web preferido, o ejecuta un servidor local.
 
 ## Contribución
 
@@ -35,11 +35,3 @@ Si deseas contribuir al proyecto, por favor crea un fork del repositorio, realiz
 
 Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo `LICENSE` para obtener más información.
 
-## Contacto
-
-Si tienes alguna pregunta o sugerencia, no dudes en contactar al responsable del proyecto:
-
-Mgtr. Luis Fernando Granda Morales
-Analista de Datos
-Vicerrectorado de Investigación
-Universidad Técnica Particular de Loja
