@@ -27,6 +27,16 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 1. Clona este repositorio en tu máquina local.
 2. Abre el archivo `index.html` en tu navegador web preferido, o ejecuta un servidor local.
 
+
+## Cómo usar el script de Python para eliminar registros duplicados de la base de datos.
+
+1. Asegúrate de tener Python instalado en tu computadora.
+2. Descarga el archivo duplicados.py desde el repositorio en GitHub.
+3. Abre el archivo con tu editor de código favorito y configura las rutas de los archivos de entrada, salida y duplicados según sea necesario.
+4. Ejecuta el script de Python utilizando la línea de comando con el comando python duplicados.py. El script leerá el archivo CSV de entrada, identificará y eliminará los registros duplicados y generará dos nuevos archivos de salida, uno sin duplicados y otro con un resumen de los registros duplicados.
+5. Revisa los archivos de salida y verifica que los registros se hayan eliminado correctamente. Si encuentras algún problema, revisa los mensajes de error del script y ajusta las rutas de los archivos de entrada y salida si es necesario.
+
+Es importante que tengas en cuenta que para que el script funcione correctamente, es necesario que el archivo CSV de entrada tenga una columna llamada Author Name que contenga los nombres de los autores a analizar. También debes asegurarte de que los archivos de salida y duplicados tengan nombres y rutas válidos en tu sistema.
 ## Contribución
 
 Si deseas contribuir al proyecto, por favor crea un fork del repositorio, realiza tus cambios y envía un pull request.
